@@ -173,7 +173,7 @@ ObservableList<produit> personnes = FXCollections.observableArrayList();
             {
             if(pr==1 && color!="")
             {
-            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where p.couleur like '"+"%"+ color +"%" + "' and c.type_c like '"+"%"+ categorie +"%" + "' order by prix ";
+            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where p.couleur like '"+"%"+ color +"%" + "' and c.type_c like '"+  categorie  + "' order by prix ";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             
@@ -207,7 +207,7 @@ ObservableList<produit> personnes = FXCollections.observableArrayList();
             
               if(pr==2 && color!="")
             {
-            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where p.couleur like '"+"%"+ color +"%" + "' and c.type_c like '"+"%"+ categorie +"%" + "' order by prix desc";
+            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where p.couleur like '"+"%"+ color +"%" + "' and c.type_c like '"+  categorie  + "' order by prix desc";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             
@@ -240,7 +240,41 @@ ObservableList<produit> personnes = FXCollections.observableArrayList();
               
                if(pr==1 && color=="")
             {
-            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where c.type_c like '"+"%"+ categorie +"%" + "' order by prix ";
+            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where c.type_c like  '"+  categorie  + "' order by prix ";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            
+            
+            while (rs.next()) {
+              
+                produit p = new produit();
+                
+                p.setId(rs.getInt("id"));
+                p.setNom(rs.getString("nom_p"));
+                p.setCouleur(rs.getString("couleur"));
+                p.setTaille(rs.getString("taille"));
+                p.setTaille2(rs.getString("taille2"));
+                p.setDesc(rs.getString("descr"));
+                p.setImg(rs.getString("img"));
+                p.setPrix(rs.getFloat("prix"));
+                p.setQte(rs.getInt("qte"));
+                
+               
+        
+            categories cat = new categories(rs.getInt("categorie_id"),rs.getString("type_c")); 
+            marques mar = new marques(rs.getInt("marquep_id"),rs.getString("nom_m"));
+            
+                p.setCat(cat);
+                p.setMar(mar);
+                
+                personnes.add(p);
+            }
+            }
+               
+               
+               if(pr==0 && color=="")
+            {
+            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where c.type_c like  '"+  categorie  + "' order by prix desc ";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             
@@ -274,7 +308,7 @@ ObservableList<produit> personnes = FXCollections.observableArrayList();
                
                if(pr==2 && color=="")
             {
-            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where c.type_c like '"+"%"+ categorie +"%" + "' order by prix desc ";
+            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where c.type_c like '"+  categorie  + "' order by prix desc ";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             
@@ -308,7 +342,7 @@ ObservableList<produit> personnes = FXCollections.observableArrayList();
                
                 if(pr==0 && color!="")
             {
-            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where p.couleur like '"+"%"+ color +"%" + "' and c.type_c like '"+"%"+ categorie +"%" + "' ";
+            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where p.couleur like '"+"%"+ color +"%" + "' and c.type_c like '"+  categorie  + "' ";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             

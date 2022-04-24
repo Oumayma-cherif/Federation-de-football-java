@@ -630,7 +630,7 @@ public class ProduitController implements Initializable {
            imgview.setImage(image);
                  
     }
-
+    @FXML
     private void nom_edit(TableColumn.CellEditEvent<produit, String> event) {
         produit prod=tableprod.getSelectionModel().getSelectedItem();
        
@@ -638,14 +638,14 @@ public class ProduitController implements Initializable {
         tfnom.setText(prod.getNom());
    
     }
-
+    @FXML
     private void qte_edit(TableColumn.CellEditEvent<produit, Integer> event) {
     produit prod=tableprod.getSelectionModel().getSelectedItem();
     prod.setQte(event.getNewValue());
         
     tfqte.setText(String.valueOf(prod.getQte()));
     }
-
+    @FXML
     private void prix_edit(TableColumn.CellEditEvent<produit, Float> event) {
     produit prod=tableprod.getSelectionModel().getSelectedItem();
     prod.setPrix(event.getNewValue());
@@ -654,6 +654,8 @@ public class ProduitController implements Initializable {
          tfprix.setText(prix);
     }
 
+  
+   
   
    
 

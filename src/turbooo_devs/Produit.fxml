@@ -61,7 +61,7 @@
           <TableColumn fx:id="nomprod" onEditCommit="#nom_edit" prefWidth="75.0" text="Nom" />
             <TableColumn fx:id="categorieprod" prefWidth="70.0" text="Categorie" />
             <TableColumn fx:id="marqueprod" prefWidth="75.0" text="Marque" />
-            <TableColumn fx:id="taille1prod" onEditCommit="#fezfzfa" prefWidth="64.0" text="Taille1" />
+            <TableColumn fx:id="taille1prod" prefWidth="64.0" text="Taille1" />
             <TableColumn fx:id="taille2prod" prefWidth="73.0" text="Taille2" />
             <TableColumn fx:id="couleurprod" prefWidth="82.0" text="Couleur" />
             <TableColumn fx:id="quantiteprod" onEditCommit="#qte_edit" prefWidth="86.0" text="Quantite" />

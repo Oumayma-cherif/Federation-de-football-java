@@ -4,8 +4,11 @@
  */
 package turbooo_devs;
 
+import entities.panier;
 import java.io.IOException;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -20,11 +23,12 @@ import javafx.stage.Stage;
  * @author Lord
  */
 public class Turbooo_devs extends Application {
-    
+   public  static ObservableList<panier> pan=FXCollections.observableArrayList();
+   public static String myWeb2="";
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("HomaAhmed.fxml"));
-        
         
         Scene scene = new Scene(root);
         primaryStage.setTitle("Hello World!");
