@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FrontofficeFormController">
+   <children>
+      <AnchorPane fx:id="ap2" layoutX="157.0" prefHeight="589.0" prefWidth="628.0" />
+      <Label fx:id="lb_username" layoutX="35.0" layoutY="35.0" text="Label" />
+      <Label fx:id="lb_email" layoutX="35.0" layoutY="59.0" text="Label" />
+      <Button fx:id="btn_rec" layoutX="23.0" layoutY="100.0" mnemonicParsing="false" onAction="#btn_recAction" prefHeight="52.0" prefWidth="103.0" text="Reclamation" />
+      <Button fx:id="btn_logout" layoutX="23.0" layoutY="522.0" mnemonicParsing="false" onAction="#btn_logoutAction" prefHeight="26.0" prefWidth="103.0" text="Logout" />
+   </children>
+</AnchorPane>
