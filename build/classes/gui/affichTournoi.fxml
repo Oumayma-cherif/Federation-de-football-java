@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="619.0" prefWidth="797.0" stylesheets="@bootstrap.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AffichTournoiController">
+   <children>
+      <TableView fx:id="tableTournoi" layoutX="2.0" layoutY="1.0" onMousePressed="#afichimg" prefHeight="619.0" prefWidth="680.0" stylesheets="@bootstrap.css">
+        <columns>
+          <TableColumn fx:id="id_t" onEditStart="#supp" prefWidth="75.0" text="id" />
+          <TableColumn fx:id="id_nom" onEditCommit="#change" prefWidth="75.0" text="nom" />
+            <TableColumn fx:id="id_dated" onEditCommit="#chandedated" prefWidth="75.0" text="dated" />
+            <TableColumn fx:id="id_datef" onEditCommit="#changedatef" prefWidth="75.0" text="datef" />
+            <TableColumn fx:id="id_typet" onEditCommit="#changetype" prefWidth="75.0" text="type" />
+            <TableColumn fx:id="id_nbrc" onEditCommit="#changenbrc" prefWidth="75.0" text="nbrc" />
+            <TableColumn fx:id="id_img" prefWidth="75.0" text="logo" />
+        </columns>
+      </TableView>
+      <ImageView fx:id="id_log" fitHeight="210.0" fitWidth="81.0" layoutX="690.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="btx" layoutX="697.0" layoutY="279.0" mnemonicParsing="false" onAction="#ajoutT" text="ajouter" />
+      <Button fx:id="pdf" layoutX="698.0" layoutY="216.0" mnemonicParsing="false" onAction="#PDF" text="Pdf" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.TournoiFrontController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Détails">
+                           <font>
+                              <Font name="Cambria Bold" size="40.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <VBox alignment="CENTER" prefHeight="575.0" prefWidth="100.0" styleClass="chosen-fruit-card" stylesheets="@style.css" fx:id="xi">
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" />
+                     </VBox.margin>
+                     <children>
+                        <ImageView fx:id="imgV" fitHeight="150.0" fitWidth="150.0" nodeOrientation="INHERIT" onMouseClicked="#onClick" pickOnBounds="true" preserveRatio="true">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label fx:id="nom" text="Label" textFill="#170000">
+                           <font>
+                              <Font name="Calibri Bold" size="40.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="dated" text="Label" textFill="#170000">
+                           <font>
+                              <Font name="Calibri Bold" size="40.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="datef" text="Label" textFill="#170000">
+                           <font>
+                              <Font name="Calibri Bold" size="40.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="type" text="Label" textFill="#170000">
+                           <font>
+                              <Font name="Calibri Bold" size="40.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="nbrc" text="Label" textFill="#170000">
+                           <font>
+                              <Font name="Calibri Bold" size="40.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="imgreward" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button fx:id="det" mnemonicParsing="false" onAction="#showClassement" text="detail" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </left>
+         <right>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="700.0" prefWidth="785.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="700.0" prefWidth="700.0" stylesheets="@style.css">
+                           <children>
+                              <Label text="Listes Des Tournois">
+                                 <font>
+                                    <Font name="Cambria Bold" size="40.0" />
+                                 </font>
+                              </Label>
+                              <HBox fx:id="hb" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="700.0" styleClass="shadow" stylesheets="@style.css">
+                                 <children>
+                                    <ListView fx:id="list" onMouseClicked="#detail" prefHeight="900.0" prefWidth="500.0" styleClass="add-btn" stylesheets="@style.css">
+                                       <opaqueInsets>
+                                          <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                                       </opaqueInsets>
+                                       <effect>
+                                          <ColorAdjust />
+                                       </effect>
+                                    </ListView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </HBox.margin>
+                  </HBox>
+               </children>
+            </HBox>
+         </right>
+      </BorderPane>
+   </children>
+</AnchorPane>
