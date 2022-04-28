@@ -4,6 +4,8 @@
  */
 package javafxapplication1;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import entities.Badge;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
@@ -13,6 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.System.Logger;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -23,6 +26,7 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -36,7 +40,9 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -60,7 +66,7 @@ public class BadgeController implements Initializable {
     @FXML
     private TableColumn<Badge, Number> nbB;
     @FXML
-    private TableColumn<Badge, String> logoB;
+    private TableColumn<Badge, Image> logoB;
     @FXML
     private TextField tanomB;
     @FXML
@@ -75,7 +81,7 @@ public class BadgeController implements Initializable {
     @FXML
     private Button remove;
     @FXML
-    private ImageView imgv;
+    private TextField searchbar;
     /**
      * Initializes the controller class.
      */
@@ -85,16 +91,33 @@ public class BadgeController implements Initializable {
         showBadges();
         tabB.setEditable(true);
         nomB.setCellFactory(TextFieldTableCell.forTableColumn());
+        searchbar.textProperty().addListener((o, oldVal, newVal) -> {
+    searchbadges(newVal);
+    });
+     //   searchbar.textFormatterProperty().addListener(listener);
         /*
-        try {
-            //logoB.setCellFactory(TextFieldTableCell.forTableColumn());
-            // Image myImage = new Image(new FileInputStream("C:/Users/ksaay/Desktop/4882066.jpg"));
-            Image image = new Image(new FileInputStream("C:/Users/ksaay/Desktop/4882066.jpg"));
-             imgv.setImage(image);
-        } catch (FileNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BadgeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
+        searchbar.textFormatterProperty().addListener(
+                {
+                    @Override
+                    public void changed(ObservableValue <? extends String> observable , String oldValue,String newValue)
+                    {
+                        try{
+                            
+                        }catch(IOException ex)
+                        {
+                            
+                        }
+                    }
+        
+    });*/
+        /*
+          nbB.setCellFactory(new Callback<TableColumn<Badge, Number>, TableCell<Badge, Number>>() {
+            @Override
+            public TableCell<Badge, Number> call(TableColumn<Badge, Number> param) {
+                
+            }
+          });*/
+        
         
         
   
@@ -111,20 +134,19 @@ public class BadgeController implements Initializable {
       showBadges();
 //b.setLogoB(badgeStringCellEditEvent.getNewValue());
 
-    }
+    }@FXML
         public void onEditChangelogoB(TableColumn.CellEditEvent<Badge,String> badgeStringCellEditEvent)
 {
 Badge b = tabB.getSelectionModel().getSelectedItem();
 b.setLogoB(badgeStringCellEditEvent.getNewValue());
 psm.modifier(b);
-}
+}@FXML
     public void onEditChangenomB(TableColumn.CellEditEvent<Badge,String> badgeStringCellEditEvent)
 {
 Badge b = tabB.getSelectionModel().getSelectedItem();
 b.setNomB(badgeStringCellEditEvent.getNewValue());
 psm.modifier(b);
-}
-//onEditChangenbB
+}@FXML
     public void onEditChangenbB(TableColumn.CellEditEvent<Badge,Number> badgeStringCellEditEvent)
 {
 
@@ -145,9 +167,18 @@ alert.setContentText("Error !");
 alert.showAndWait();
          }
 }
+    public  String generateRandomPassword(int len) {
+		String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk"
+          +"lmnopqrstuvwxyz";
+		Random rnd = new Random();
+		StringBuilder sb = new StringBuilder(len);
+		for (int i = 0; i < len; i++)
+			sb.append(chars.charAt(rnd.nextInt(chars.length())));
+		return sb.toString();
+	}
      @FXML
     private void save(ActionEvent event) {
-        if(tanomB.getText() == "" || badgeimg.getText() == "" || tanbB.getText() == "")
+        if(tanomB.getText().isEmpty()  || badgeimg.getText().isEmpty() || tanbB.getText().isEmpty())
         {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
 alert.setTitle("Error");
@@ -158,9 +189,21 @@ alert.showAndWait();
         }
         else
         {
-            
-             Badge b = new Badge(tanomB.getText(),badgeimg.getText(),Integer.parseInt(tanbB.getText()));
-             System.out.print(b.toString());
+             
+            String nameImage;
+          
+
+            nameImage = generateRandomPassword(10) + ".png";
+              Image img3 = new Image(badgeimg.getText());
+          
+            File file = new File(Badge.url_upload  + nameImage);
+
+            try {
+                ImageIO.write(SwingFXUtils.fromFXImage(img3, null), "png", file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+             Badge b = new Badge(tanomB.getText(),nameImage,Integer.parseInt(tanbB.getText()));
         ServiceBadge sb = new ServiceBadge(); 
         sb.ajouter(b);
         showBadges();
@@ -190,28 +233,77 @@ alert.showAndWait();
 
          File f = fileChooser.showOpenDialog(new Stage());
 
-         badgeimg.setText(f.toString());
+         badgeimg.setText(f.getAbsoluteFile().toURI().toString());
          
     }
-    public void showBadges()
+     public void showBadges()
     {
        
-        
-        
-        idB.setCellValueFactory(new PropertyValueFactory<Badge,Integer>("id"));
-        nomB.setCellValueFactory(new PropertyValueFactory<Badge,String>("nomB"));
-        nbB.setCellValueFactory(new PropertyValueFactory<Badge,Number>("nb"));
-        logoB.setCellValueFactory(new PropertyValueFactory<Badge,String>("logoB"));
+          logoB.setCellFactory(param -> {
+            //Set up the ImageView
+            final ImageView imageview = new ImageView();
+            imageview.setFitHeight(70);
+            imageview.setFitWidth(100);
+
+            //Set up the Table
+            TableCell<Badge, Image> cell = new TableCell<Badge, Image>() {
+                public void updateItem(Image item, boolean empty) {
+                    if (item != null) {
+                        imageview.setImage(item);
+                    }
+                }
+            };
+            // Attach the imageview to the cell
+            cell.setGraphic(imageview);
+            return cell;
+        });
+
+      
+         logoB.setCellValueFactory(new PropertyValueFactory<Badge, Image>("img"));
+      idB.setCellValueFactory(new PropertyValueFactory<Badge,Integer>("id"));
+       nomB.setCellValueFactory(new PropertyValueFactory<Badge,String>("nomB"));
+       nbB.setCellValueFactory(new PropertyValueFactory<Badge,Number>("nb"));
+        //tabB.setItems(list);
         tabB.setItems(psm.recuperer(0));
+    }
+    public void searchbadges(String x)
+    {
+       
+          logoB.setCellFactory(param -> {
+            //Set up the ImageView
+            final ImageView imageview = new ImageView();
+            imageview.setFitHeight(70);
+            imageview.setFitWidth(100);
+
+            //Set up the Table
+            TableCell<Badge, Image> cell = new TableCell<Badge, Image>() {
+                public void updateItem(Image item, boolean empty) {
+                    if (item != null) {
+                        imageview.setImage(item);
+                    }
+                }
+            };
+            // Attach the imageview to the cell
+            cell.setGraphic(imageview);
+            return cell;
+        });
+
+      
+         logoB.setCellValueFactory(new PropertyValueFactory<Badge, Image>("img"));
+      idB.setCellValueFactory(new PropertyValueFactory<Badge,Integer>("id"));
+       nomB.setCellValueFactory(new PropertyValueFactory<Badge,String>("nomB"));
+       nbB.setCellValueFactory(new PropertyValueFactory<Badge,Number>("nb"));
+        //tabB.setItems(list);
+        //tabB.setItems(psm.recuperer(0));
+        tabB.setItems(psm.rec_search(x));
     }
 
 
-    
-/*
+ @FXML
     private void onEditStartlogoB(TableColumn.CellEditEvent<Badge, String> event) {
         FileChooser fileChooser = new FileChooser();
 
-        //Set extension filter
+       
         FileChooser.ExtensionFilter extFilterJPG
                 = new FileChooser.ExtensionFilter("JPG files (*.JPG)", "*.JPG");
         FileChooser.ExtensionFilter extFilterjpg
@@ -225,48 +317,9 @@ alert.showAndWait();
 
          File f = fileChooser.showOpenDialog(new Stage());
 
-        // badgeimg.setText(f.toString());
+        
          Badge b = tabB.getSelectionModel().getSelectedItem();
-         if(f.toString()=="")
-         {
-             b.setLogoB(f.toString());
-psm.modifier(b);
-
-         }
-         else
-         {
-             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-alert.setTitle("Error");
-alert.setHeaderText("Update Error");
-alert.setContentText("Error !");
-
-alert.showAndWait();
-         }
-         showBadges();
-
-    }*/
-
-    private void onEditStartlogoB(TableColumn.CellEditEvent<Badge, String> event) {
-         FileChooser fileChooser = new FileChooser();
-
-        //Set extension filter
-        FileChooser.ExtensionFilter extFilterJPG
-                = new FileChooser.ExtensionFilter("JPG files (*.JPG)", "*.JPG");
-        FileChooser.ExtensionFilter extFilterjpg
-                = new FileChooser.ExtensionFilter("jpg files (*.jpg)", "*.jpg");
-        FileChooser.ExtensionFilter extFilterPNG
-                = new FileChooser.ExtensionFilter("PNG files (*.PNG)", "*.PNG");
-        FileChooser.ExtensionFilter extFilterpng
-                = new FileChooser.ExtensionFilter("png files (*.png)", "*.png");
-        fileChooser.getExtensionFilters()
-                .addAll(extFilterJPG, extFilterjpg, extFilterPNG, extFilterpng);
-
-         File f = fileChooser.showOpenDialog(new Stage());
-
-        // badgeimg.setText(f.toString());
-       // System.out.println(f.toString());
-         Badge b = tabB.getSelectionModel().getSelectedItem();
-         if(f.toString()!="")
+         if(f.toString().isEmpty())
          {
              b.setLogoB(f.toString());
 psm.modifier(b);
@@ -283,38 +336,14 @@ alert.showAndWait();
          }
          showBadges();
     }
-/*
-    @FXML
-    private void onclickid(TableColumn.CellEditEvent<Badge, Integer> event) {
-        ObservableList<Badge> prod;
-         prod=tabB.getSelectionModel().getSelectedItems();
-        Image image;
-        try {
-            image = new Image(new FileInputStream(prod.get(0).getLogoB()));
-            imgv.setImage(image);
-        } catch (FileNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BadgeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-           
-    }*/
-
-   
-
-   
-
-    
-
-   
 
   
+    @FXML
+    private void oneditsearchbar(InputMethodEvent event) {
+       
+        tabB.setItems(psm.rec_search(event.toString()));
+    }
 
    
-
-   
-
-   
-
-
-    
-    
+ 
 }

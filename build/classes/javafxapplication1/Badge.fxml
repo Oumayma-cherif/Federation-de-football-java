@@ -5,17 +5,16 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="791.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication1.BadgeController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="857.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication1.BadgeController">
    <children>
-      <TableView fx:id="tabB" layoutX="218.0" layoutY="59.0" prefHeight="313.0" prefWidth="528.0">
+      <TableView fx:id="tabB" layoutX="218.0" layoutY="59.0" prefHeight="313.0" prefWidth="628.0">
         <columns>
-          <TableColumn fx:id="idB" onEditStart="#onclickid" prefWidth="72.0" text="idB" />
+          <TableColumn fx:id="idB" prefWidth="72.0" text="idB" />
           <TableColumn fx:id="nomB" onEditCommit="#onEditChangenomB" prefWidth="190.0" text="nomB" />
             <TableColumn fx:id="nbB" onEditCommit="#onEditChangenbB" prefWidth="56.0" text="nbB" />
-            <TableColumn fx:id="logoB" onEditStart="#onEditStartlogoB" prefWidth="195.0" text="logoB" />
+            <TableColumn fx:id="logoB" onEditStart="#onEditStartlogoB" prefWidth="250.0" text="logoB" />
         </columns>
       </TableView>
       <TextField fx:id="tanomB" layoutX="55.0" layoutY="121.0" prefHeight="25.0" prefWidth="128.0" />
@@ -26,6 +25,6 @@
       <Label layoutX="17.0" layoutY="192.0" text="nbB" />
       <Label fx:id="badgeimg" layoutX="37.0" layoutY="142.0" prefHeight="40.0" prefWidth="155.0" />
       <Button fx:id="remove" layoutX="22.0" layoutY="347.0" mnemonicParsing="false" onAction="#onremove" text="Remove" />
-      <ImageView fx:id="imgv" fitHeight="95.0" fitWidth="185.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="searchbar" layoutX="616.0" layoutY="26.0" onInputMethodTextChanged="#oneditsearchbar" />
    </children>
 </AnchorPane>

@@ -5,13 +5,16 @@
  */
 package entities;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 /**
  *
  * @author ksaay
  */
 public class Badge {
     private int id,nb;
-
+    public static String url_upload = "C:\\Users\\ksaay\\Desktop\\anouer\\Federation-de-football-master-c\\public\\uploads\\img\\";
     public Badge(int id, int nb, String nomB, String logoB) {
         this.id = id;
         this.nb = nb;
@@ -19,6 +22,15 @@ public class Badge {
         this.logoB = logoB;
     }
     private String nomB,logoB;
+    private Image img ; 
+
+    public Image getImg() {
+        return img;
+    }
+
+    public void setImg(Image img) {
+        this.img = img;
+    }
 
     public Badge() {
       

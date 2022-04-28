@@ -21,6 +21,9 @@ public class Interaction {
         return "Interaction{" + "idi=" + idi + ", type=" + type + ", descrp=" + descrp + ", user=" + user + ", article=" + article + '}';
     }
 
+    public Interaction() {
+    }
+
     public void setIdi(int idi) {
         this.idi = idi;
     }
@@ -74,5 +77,12 @@ public class Interaction {
         this.descrp = descrp;
         this.user = user;
         this.article = article;
+    }
+     public Interaction(Interaction a) {
+        this.idi = a.idi;
+        this.type = a.type;
+        this.descrp = a.descrp;
+        this.user = a.user;
+        this.article = a.article;
     }
 }

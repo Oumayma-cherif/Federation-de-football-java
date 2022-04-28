@@ -8,24 +8,27 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication1.ArticleController">
+<AnchorPane id="AnchorPane" prefHeight="468.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication1.ArticleController">
    <children>
-      <TableView fx:id="taba" layoutX="24.0" layoutY="30.0" prefHeight="200.0" prefWidth="551.0">
+      <TableView fx:id="taba" layoutX="34.0" layoutY="30.0" prefHeight="267.0" prefWidth="688.0">
         <columns>
           <TableColumn fx:id="id" prefWidth="40.0" text="id" />
-          <TableColumn fx:id="user_id" prefWidth="110.0" text="user_id" />
-            <TableColumn fx:id="titre" prefWidth="75.0" text="titre" />
-            <TableColumn fx:id="descr" prefWidth="75.0" text="descr" />
-            <TableColumn fx:id="datea" prefWidth="75.0" text="datea" />
-            <TableColumn fx:id="img" prefWidth="169.0" text="img" />
+          <TableColumn fx:id="user_id" prefWidth="110.0" text="username" />
+            <TableColumn fx:id="titre" onEditCommit="#onedittitre" prefWidth="122.0" text="titre" />
+            <TableColumn fx:id="descr" onEditCommit="#oneditdescr" prefWidth="210.0" text="descr" />
+            <TableColumn fx:id="datea" prefWidth="67.0" text="datea" />
+            <TableColumn fx:id="img" prefWidth="131.0" text="img" />
         </columns>
       </TableView>
-      <TextField fx:id="tatitre" layoutX="139.0" layoutY="230.0" />
-      <TextField fx:id="tadescr" layoutX="141.0" layoutY="292.0" />
-      <ComboBox fx:id="user_c" layoutX="438.0" layoutY="305.0" prefWidth="150.0" />
-      <Label layoutX="48.0" layoutY="248.0" text="titre" />
-      <Label layoutX="51.0" layoutY="310.0" text="descr" />
-      <Label layoutX="365.0" layoutY="302.0" text="user" />
-      <Button fx:id="upload" layoutX="438.0" layoutY="244.0" mnemonicParsing="false" onAction="#onupload" text="upload" />
+      <TextField fx:id="tatitre" layoutX="139.0" layoutY="304.0" />
+      <TextField fx:id="tadescr" layoutX="139.0" layoutY="356.0" />
+      <ComboBox fx:id="user_c" layoutX="436.0" layoutY="312.0" prefWidth="150.0" />
+      <Label layoutX="49.0" layoutY="308.0" text="titre" />
+      <Label layoutX="44.0" layoutY="369.0" text="descr" />
+      <Label layoutX="368.0" layoutY="317.0" text="user" />
+      <Button fx:id="upload" layoutX="443.0" layoutY="371.0" mnemonicParsing="false" onAction="#onupload" text="Upload" />
+      <Label fx:id="imglabel" layoutX="453.0" layoutY="328.0" />
+      <Button fx:id="save" layoutX="283.0" layoutY="398.0" mnemonicParsing="false" onAction="#onsave" text="Save" />
+      <Button fx:id="remove" layoutX="653.0" layoutY="316.0" mnemonicParsing="false" onAction="#onremove" text="remove" />
    </children>
 </AnchorPane>

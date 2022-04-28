@@ -21,7 +21,8 @@ public class User {
     int nbp;
 public User()
 {
-    
+    id = 1;
+    role= "client";
 }
 
     public User(String username, String email, String mdp) {

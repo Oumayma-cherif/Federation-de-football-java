@@ -5,6 +5,8 @@
 package javafxapplication1;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,6 +16,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javax.mail.MessagingException;
+import util.sendmail;
 
 /**
  *
@@ -23,16 +27,7 @@ public class JavaFXApplication1 extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        /*
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });*/
+     // sendmail.sendEmail("ksaay2000@gmail.com","Laporta","<h1>Laporta news</h1>","Degla");
         Parent root = FXMLLoader.load(getClass().getResource("MainGestionArticle.fxml"));
         Scene scene = new Scene(root);
       //  StackPane root = new StackPane();

@@ -30,6 +30,8 @@ public class MainGestionArticleController implements Initializable {
     private Button articles;
     @FXML
     private Button badges;
+    @FXML
+    private Button btx;
     /**
      * Initializes the controller class.
      */
@@ -56,6 +58,18 @@ public class MainGestionArticleController implements Initializable {
    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
    scene = new Scene(root);
    stage.setScene(scene);
+   stage.setTitle("kk");
+   stage.show();
+        
+    }
+
+    @FXML
+    private void showArticleF(ActionEvent event)throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("ArticleFront.fxml"));
+   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+   scene = new Scene(root);
+   stage.setScene(scene);
+  
    stage.show();
         
     }

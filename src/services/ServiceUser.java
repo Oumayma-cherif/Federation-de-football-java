@@ -48,6 +48,7 @@ public class ServiceUser {
                User u = new User();
                  u.setId(Integer.parseInt(rs.getString("id")));
                u.setUsername(rs.getString("username"));
+                u.setEmail(rs.getString("email"));
                users.add(u);
                
            }

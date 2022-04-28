@@ -5,20 +5,42 @@
  */
 package entities;
 
+import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
+
 /**
  *
  * @author ksaay
  */
 public class Article {
+    public static String url_upload = "C:\\Users\\ksaay\\Desktop\\anouer\\Federation-de-football-master-c\\public\\uploads\\img\\";
     int id;
     String titre;
     String descr;
     String datea;
     String img;
     User user;
+    private Image img_a ; 
+    private ComboBox users;
+
+    public ComboBox getUsers() {
+        return users;
+    }
+
+    public void setUsers(ComboBox users) {
+        this.users = users;
+    }
+
+    public Image getImg_a() {
+        return img_a;
+    }
+
+    public void setImg_a(Image img_a) {
+        this.img_a = img_a;
+    }
 
     public Article() {
-     
+       this.users = new ComboBox();
     }
 
     public Article(Article article) {
@@ -27,7 +49,7 @@ public class Article {
         this.descr = article.descr;
         this.datea = article.datea;
         this.img = article.img;
-       // this.user = article.user;
+        this.img_a = article.img_a;
     }
 
     public void setId(int id) {
@@ -47,6 +69,7 @@ public class Article {
         this.datea = datea;
         this.img = img;
         this.user = user;
+        this.users = new ComboBox();
     }
 
     public Article(String titre, String descr, String img, User user) {
@@ -54,6 +77,7 @@ public class Article {
         this.descr = descr;
         this.img = img;
         this.user = user;
+          this.users = new ComboBox();
     }
 
     public Article(int id, String titre, String descr, String datea, String img, User user) {
@@ -63,6 +87,7 @@ public class Article {
         this.datea = datea;
         this.img = img;
         this.user = user;
+          this.users = new ComboBox();
     }
 
     public void setTitre(String titre) {

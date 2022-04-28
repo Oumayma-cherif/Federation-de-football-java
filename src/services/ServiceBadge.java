@@ -7,8 +7,11 @@ package services;
 
 
 import entities.Badge;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 import java.io.IOException;
+import java.lang.System.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.image.Image;
 import util.MyDB;
 
 
@@ -105,6 +109,18 @@ public class ServiceBadge implements IService<Badge> {
                 p.setNomB(rs.getString("nom_b"));
                 p.setLogoB(rs.getString("logo_b"));
                 p.setNb(rs.getInt("nb"));
+                FileInputStream inputStream;
+                try {
+                        inputStream = new FileInputStream(Badge.url_upload + rs.getString("logo_b"));
+                    //   inputStream = new FileInputStream("src/voyagep.png");
+                    Image image = new Image(inputStream);
+                    //   imgViewV = new ImageView(image);
+                    p.setImg(image);
+
+                } catch (FileNotFoundException ex) {
+                   // Logger.getLogger(ReclamationFormController.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
                 badges.add(p);
             }
 
@@ -115,8 +131,8 @@ public class ServiceBadge implements IService<Badge> {
     }
     
     @Override
-    public List<Badge> rec_search(String x) {
-        List<Badge> badges = new ArrayList<>();
+    public ObservableList<Badge> rec_search(String x) {
+        ObservableList<Badge> badges = FXCollections.observableArrayList();   
         try {
             String req="select * from badge where nom_b "
                     + "like '%" + x+ "%' ";
@@ -131,6 +147,18 @@ public class ServiceBadge implements IService<Badge> {
                 p.setId(rs.getInt(1));
                 p.setNomB(rs.getString("nom_b"));
                 p.setLogoB(rs.getString("logo_b"));
+                 FileInputStream inputStream;
+                try {
+                        inputStream = new FileInputStream(Badge.url_upload + rs.getString("logo_b"));
+                    //   inputStream = new FileInputStream("src/voyagep.png");
+                    Image image = new Image(inputStream);
+                    //   imgViewV = new ImageView(image);
+                    p.setImg(image);
+
+                } catch (FileNotFoundException ex) {
+                   // Logger.getLogger(ReclamationFormController.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
                 p.setNb(rs.getInt("nb"));
                 badges.add(p);
             }

@@ -4,9 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/javafxapplication1/ArticleController.java</file>
-            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/javafxapplication1/Badge.fxml</file>
-            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/javafxapplication1/JavaFXApplication1.java</file>
-            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/javafxapplication1/BadgeController.java</file>
+            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/services/ServiceArticle.java</file>
+            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/javafxapplication1/ArticleDetailController.java</file>
+            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/javafxapplication1/ListViewHandler.java</file>
+            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/entities/Article.java</file>
+            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/javafxapplication1/ArticleFrontController.java</file>
         </group>
     </open-files>
 </project-private>
