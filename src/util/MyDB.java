@@ -8,37 +8,47 @@ package util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author Skander
+ * @author Ahmed.A.Hsouna
  */
 public class MyDB {
 
-    private final String url = "jdbc:mysql://localhost:3306/turbodevs";
-    private final String username = "root";
-    private final String password = "";
+    final String url = "jdbc:mysql://localhost:3306/turbodevs";
+
+    final String username = "root";
+    final String password = "";
+
     private Connection connection;
-    private static MyDB instance;
+    
+   static MyDB instance;
 
     private MyDB() {
+
         try {
             connection = DriverManager.getConnection(url, username, password);
             System.out.println("Connexion etablie");
+
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
     
-    public static MyDB getInstance(){
-        if(instance == null)
-            instance = new MyDB();
+    
+    public static MyDB getInstance() {
+        if(instance==null) 
+            instance=new MyDB();
         return instance;
+       
     }
 
     public Connection getConnection() {
         return connection;
     }
-   
+    
+    
 
 }
