@@ -3,26 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/amine/Desktop/piFX/src/entities/Reclamation.java</file>
-            <file>file:/D:/amine/Desktop/piFX/src/controller/UserFormController.java</file>
-            <file>file:/D:/amine/Desktop/piFX/src/controller/SignInFormController.java</file>
-            <file>file:/D:/amine/Desktop/piFX/src/gui/signInForm.fxml</file>
-            <file>file:/D:/amine/Desktop/piFX/src/services/ReclamationService.java</file>
-            <file>file:/D:/amine/Desktop/piFX/src/gui/reclamationForm.fxml</file>
-            <file>file:/D:/amine/Desktop/piFX/src/utils/DataSource.java</file>
-            <file>file:/D:/amine/Desktop/piFX/src/hellofx/Main.java</file>
-            <file>file:/D:/amine/Desktop/piFX/src/controller/BackofficeFormController.java</file>
-            <file>file:/D:/amine/Desktop/piFX/src/utils/session.java</file>
-            <file>file:/D:/amine/Desktop/piFX/src/gui/backofficeForm.fxml</file>
-            <file>file:/D:/amine/Desktop/piFX/src/gui/reclamationAddForm.fxml</file>
-            <file>file:/D:/amine/Desktop/piFX/nbproject/build-impl.xml</file>
-            <file>file:/D:/amine/Desktop/piFX/src/gui/userForm.fxml</file>
-            <file>file:/D:/amine/Desktop/piFX/src/controller/FrontofficeFormController.java</file>
-            <file>file:/D:/amine/Desktop/piFX/src/gui/frontofficeForm.fxml</file>
-            <file>file:/D:/amine/Desktop/piFX/src/controller/ReclamationFormController.java</file>
-            <file>file:/D:/amine/Desktop/piFX/src/entities/User.java</file>
-            <file>file:/D:/amine/Desktop/piFX/src/services/UserService.java</file>
-            <file>file:/D:/amine/Desktop/piFX/src/controller/ReclamationAddFormController.java</file>
+            <file>file:/Users/oumaymacherif/NetBeansProjects/PidevJava/src/views/JoueurController.java</file>
+            <file>file:/Users/oumaymacherif/NetBeansProjects/PidevJava/src/test/MainProgGui.java</file>
+            <file>file:/Users/oumaymacherif/NetBeansProjects/PidevJava/src/views/ClubController.java</file>
+            <file>file:/Users/oumaymacherif/NetBeansProjects/PidevJava/src/views/Joueur.fxml</file>
+            <file>file:/Users/oumaymacherif/NetBeansProjects/PidevJava/src/views/HomeController.java</file>
         </group>
     </open-files>
 </project-private>
