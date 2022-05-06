@@ -41,8 +41,9 @@
 }
 
 .shopping-online-card{
-    -fx-background-color: #BAEAC3;
-    -fx-background-radius: 30;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 100;
+    text-decoration: none;
 }
 
 .fruit-item{

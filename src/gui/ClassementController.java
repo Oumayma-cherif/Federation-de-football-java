@@ -8,18 +8,25 @@ package gui;
 import entities.Tournoi;
 import entities.classement;
 import entities.club;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import services.ServiceClassement;
 
 /**
@@ -35,6 +42,8 @@ public int id;
     private TableColumn<classement, club> club;
     @FXML
     private TableColumn<classement, Integer> pts;
+    @FXML
+    private Button back;
 
     /**
      * Initializes the controller class.
@@ -48,16 +57,18 @@ public int id;
       s.affichcl(TournoiFrontController.selectedtournoi.getId());
        //  Tournoi t=new Tournoi();
        
-          
+          classement c =new classement();
        
         
          club.setCellValueFactory(new PropertyValueFactory<classement,club>("club"));
         pts.setCellValueFactory(new PropertyValueFactory<classement,Integer>("pts"));
+     
+       pts.setSortType(TableColumn.SortType.DESCENDING);
           club.setCellFactory(param -> {
             //Set up the ImageView
             final ImageView imageview = new ImageView();
-            imageview.setFitHeight(50);
-            imageview.setFitWidth(50);
+            imageview.setFitHeight(65);
+            imageview.setFitWidth(75);
 
             //Set up the Table
             TableCell<classement, club> cell = new TableCell<classement, club>() {
@@ -70,16 +81,29 @@ public int id;
             };
             
             // Attach the imageview to the cell
-            club.setGraphic(imageview);
+            cell.setGraphic(imageview);
             // setText(it.getNomc());
             return cell;
         });        
           
              tab.setItems(s.affichcl(TournoiFrontController.selectedtournoi.getId()));
         System.out.println(s.affichcl(TournoiFrontController.selectedtournoi.getId()));
-       
+      // tab.sort();
         //System.out.println(s.affichcl(t.getTournoi().getId()));
         
     }    
+
+    @FXML
+    private void backMe(ActionEvent event) {
+         Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("TournoiFront.fxml"));
+          Stage  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+   Scene scene = new Scene(root);
+   stage.setScene(scene);
+   stage.show();
+      } catch(IOException ex){
+      System.err.println(ex.getMessage());}
+    }
     
 }

@@ -8,12 +8,12 @@ package services;
 import entities.Tournoi;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -166,6 +166,46 @@ public class ServiceTournoi implements IService<Tournoi> {
         }
         return tournois;
     }
-   
-    
+    public int nbAdmins() {
+        Statement stm = null;
+        List<Tournoi> Coachs = new ArrayList<>();
+
+        try {
+            stm = cnx.createStatement();
+            String CoachQ = "SELECT typet FROM `tournoi` WHERE typet='club'";
+            ResultSet rst = stm.executeQuery(CoachQ);
+
+            while (rst.next()) {
+                Tournoi c = new Tournoi();
+                c.setTypet(rst.getString("typet"));
+                Coachs.add(c);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+
+        }
+        return Coachs.size();
+
+    }
+      public int nbEudiants() {
+        Statement stm = null;
+        List<Tournoi> Coachs = new ArrayList<>();
+
+        try {
+            stm = cnx.createStatement();
+            String CoachQ = "SELECT typet FROM `tournoi` WHERE typet='eliminatoire'";
+            ResultSet rst = stm.executeQuery(CoachQ);
+
+            while (rst.next()) {
+                Tournoi c = new Tournoi();
+                c.setTypet(rst.getString("typet"));
+                Coachs.add(c);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+
+        }
+        return Coachs.size();
+
+    }
 }

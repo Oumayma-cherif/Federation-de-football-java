@@ -100,9 +100,21 @@ public class ServiceRewards  implements RewardInterface<Rewards>{
                p.setRank(rs.getInt("rank"));
                  p.setTrophe(rs.getString("trophe"));
                   p.setPrixR(rs.getFloat("prix_r"));
-                 p.setImg(rs.getString("img"));
-                rewards.add(p);
-             
+                // p.setImg(rs.getString("img"));
+              
+               FileInputStream inputStream;
+                try {
+                    inputStream = new FileInputStream("../Federation-de-football-master (1)/Federation-de-football-master/public/uploads/" + rs.getString("img"));
+                    //   inputStream = new FileInputStream("src/voyagep.png");
+                    Image image = new Image(inputStream);
+                    //   imgViewV = new ImageView(image);
+                    p.setLogo(image);
+                      rewards.add(p);
+                } catch (FileNotFoundException ex) {
+                      System.out.println(ex.getMessage());
+
+                }
+                
             }
 
         } catch (SQLException ex) {
@@ -130,7 +142,7 @@ public class ServiceRewards  implements RewardInterface<Rewards>{
                     Image image = new Image(inputStream);
                     //   imgViewV = new ImageView(image);
                     p.setLogo(image);
-                rewards.add(p);
+               rewards.add(p);
             }   catch (SQLException ex) {
                     Logger.getLogger(ServiceRewards.class.getName()).log(Level.SEVERE, null, ex);
                 }

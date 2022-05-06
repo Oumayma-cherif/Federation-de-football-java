@@ -12,7 +12,16 @@ and open the template in the editor.
     
     -fx-background-color: rgba(153,51,255,0.3);    
 }
-
+.button {
+  background-color: #555555; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
 .table-view {
     -fx-background-color: rgba(153,51,255,0.3);
      border-collapse: collapse;

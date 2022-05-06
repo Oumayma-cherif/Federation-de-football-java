@@ -7,14 +7,19 @@ package services;
 
 import entities.classement;
 import entities.club;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.image.Image;
 import util.MyDB;
 
 /**
@@ -107,18 +112,29 @@ public class ServiceClassement {
           ObservableList<classement> classement = FXCollections.observableArrayList();;
             List<classement> cl = new ArrayList<>();
              ArrayList<Long> c = new ArrayList<>();
+            
        //  Array data[];
          int s=0;
          
              classement=findT(id);
              for(classement cls :classement)
              {
-                 s=0;
-                 s+= findR(cls.getClub().getId(),id);
-                 s+= (findR1(cls.getClub().getId(), id)*3);
+                 
+              try {
+                  s=0;
+                  s+= findR(cls.getClub().getId(),id);
+                  s+= (findR1(cls.getClub().getId(), id)*3);
                   s+= (findR2(cls.getClub().getId(), id)*3);
                   cls.setPts(s);
-                 //cls.setPts(99);
+                  FileInputStream inputStream;
+                  inputStream = new FileInputStream("../Federation-de-football-master (1)/Federation-de-football-master/public/uploads/" + cls.getClub().getLogo()); //cls.setPts(99);
+                  //   inputStream = new FileInputStream("src/voyagep.png");
+                  Image image = new Image(inputStream);
+                  //   imgViewV = new ImageView(image);
+                  cls.getClub().setImg(image);
+              } catch (FileNotFoundException ex) {
+                  Logger.getLogger(ServiceClassement.class.getName()).log(Level.SEVERE, null, ex);
+              }
              }
     /*
                   try {

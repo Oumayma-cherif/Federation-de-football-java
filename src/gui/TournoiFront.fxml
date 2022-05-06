@@ -18,6 +18,7 @@
          <left>
             <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@style.css" BorderPane.alignment="CENTER">
                <children>
+                  <Button fx:id="back" mnemonicParsing="false" onAction="#backM" styleClass="shopping-online-card" stylesheets="@bootstrap.css" text="back" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label text="Détails">
@@ -63,7 +64,7 @@
                            </font>
                         </Label>
                         <ImageView fx:id="imgreward" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button fx:id="det" mnemonicParsing="false" onAction="#showClassement" text="detail" />
+                        <Button fx:id="det" mnemonicParsing="false" onAction="#showClassement" styleClass="shopping-online-card" stylesheets="@bootstrap.css" text="detail" />
                      </children>
                   </VBox>
                </children>

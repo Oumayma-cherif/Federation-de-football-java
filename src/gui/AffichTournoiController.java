@@ -14,6 +14,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -69,6 +72,10 @@ public class AffichTournoiController implements Initializable {
     private DatePicker cal;
     @FXML
     private Button pdf;
+    @FXML
+    private PieChart pie;
+    @FXML
+    private Button back;
 
     /**
      * Initializes the controller class.
@@ -114,6 +121,7 @@ public class AffichTournoiController implements Initializable {
               id_typet.setCellFactory(TextFieldTableCell.forTableColumn());
             //  id_log.setImage(product);
             //   id_nbrc.setCellFactory(TextFieldTableCell.forTableColumn());
+            stats_users();
     }    
 
     @FXML
@@ -133,7 +141,7 @@ public class AffichTournoiController implements Initializable {
       }
         
     }
-    @FXML
+      @FXML
     private void supp(TableColumn.CellEditEvent<Tournoi, Integer> event) {
          Tournoi product=tableTournoi.getSelectionModel().getSelectedItem();
 //product.setId(event.getNewValue());
@@ -154,7 +162,7 @@ if (result.get() == ButtonType.OK){
     // ... user chose CANCEL or closed the dialog
 }
     }
-    @FXML
+      @FXML
     private void change(TableColumn.CellEditEvent<Tournoi, String> event) {
          Tournoi product=tableTournoi.getSelectionModel().getSelectedItem();
 product.setNomt(event.getNewValue());
@@ -162,7 +170,7 @@ product.setNomt(event.getNewValue());
     Tournoi t=new Tournoi (product);
     st.updateTournoi(t);
     }
-    @FXML
+      @FXML
     private void chandedated(TableColumn.CellEditEvent<Tournoi, String> event) {
                  Tournoi product=tableTournoi.getSelectionModel().getSelectedItem();
                    LocalDate format= cal.getValue();
@@ -174,7 +182,7 @@ product.setDated(dated);
     Tournoi t=new Tournoi (product);
     st.updateTournoi(t);
     }
-    @FXML
+      @FXML
     private void changedatef(TableColumn.CellEditEvent<Tournoi, String> event) {
                  Tournoi product=tableTournoi.getSelectionModel().getSelectedItem();
 product.setDatef(event.getNewValue());
@@ -182,7 +190,7 @@ product.setDatef(event.getNewValue());
     Tournoi t=new Tournoi (product);
     st.updateTournoi(t);
     }
-    @FXML
+      @FXML
     private void changetype(TableColumn.CellEditEvent<Tournoi, String> event) {
                  Tournoi product=tableTournoi.getSelectionModel().getSelectedItem();
 product.setTypet(event.getNewValue());
@@ -190,7 +198,7 @@ product.setTypet(event.getNewValue());
     Tournoi t=new Tournoi (product);
     st.updateTournoi(t);
     }
-    @FXML
+      @FXML
     private void changenbrc(TableColumn.CellEditEvent<Tournoi, Integer> event) {
                  Tournoi product=tableTournoi.getSelectionModel().getSelectedItem();
 product.setNbrc(event.getNewValue());
@@ -248,6 +256,41 @@ product.setNbrc(event.getNewValue());
     }
 
     }
+
+     private void stats_users() {
+        ServiceTournoi su = new ServiceTournoi();
+        int admin = su.nbAdmins();
+       
+        int etudiants = su.nbEudiants();
+        int all = etudiants + admin;
+        System.out.println("number"+admin);
+        ObservableList<PieChart.Data> list_stat = FXCollections.observableArrayList(
+                new PieChart.Data("type club: " + (admin * 100) / all + "%", admin),
+               
+                new PieChart.Data("type eliminatoire:" + (etudiants * 100) / all + "%", etudiants)
+        );
+        pie.setData(list_stat);
+        pie.setTitle(" Tournois Statistique ");
+
+    }
+
+   
+
+    @FXML
+    private void backMenu(ActionEvent event) {
+          Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("mainTournoi.fxml"));
+          Stage  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+   Scene scene = new Scene(root);
+   stage.setScene(scene);
+   stage.show();
+      } catch(IOException ex){
+      System.err.println(ex.getMessage());}
+        
+    }
+    
+    
 
     
 }
