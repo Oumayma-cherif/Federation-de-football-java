@@ -64,7 +64,7 @@
                <children>
                   <HBox alignment="BOTTOM_LEFT" prefHeight="106.0" prefWidth="1178.0" styleClass="white" stylesheets="@../valuesShop/shop.css">
                      <children>
-                        <Label text="Products:" textFill="#f16c31">
+                        <Label fx:id="prodvide" textFill="#f16c31">
                            <font>
                               <Font name="Cambria" size="24.0" />
                            </font>

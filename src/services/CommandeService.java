@@ -53,7 +53,7 @@ public class CommandeService  implements IService<commande> {
             System.out.println(date.format(now));
         
        String req = "insert into commande(prix_u,qte,date,id_p_id,id_u_id,etat,taille)"
-       + "values( '" + t.getPrix()+ "' ,'" + t.getQtec()+ "', '" + date.format(now) + "' ,'" + t.getProduit().getId()+ "', '" + t.getUser().getId()+ "','" + t.getEtat()+ "','" + t.getTaillec()+ "' )";
+       + "values( '" + t.getPrix()+ "' ,'" + t.getQtec()+ "', '" + date.format(now) + "' ,'" + t.getProduit().getId()+ "', '" + 1 + "','" + t.getEtat()+ "','" + t.getTaillec()+ "' )";
            
             //String req = "insert into commande(prix_u,qte,date,id_p_id,id_u_id,etat,taille)"
            // + "values( '" + t.getPrix()+ "' ,'" + t.getQtec()+ "', '" + date.format(now) + "' ,'" + 21 + "', '" + 4 + "','" + t.getEtat()+ "','" + t.getTaillec()+ "' )";

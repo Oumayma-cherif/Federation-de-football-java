@@ -8,21 +8,35 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import entities.User;
+import entities.commande;
+import entities.panier;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
 import java.net.URL;
+import java.util.Optional;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+import services.CommandeService;
 
 /**
  * FXML Controller class
@@ -30,6 +44,11 @@ import javafx.scene.image.ImageView;
  * @author Lord
  */
 public class Commande_verifController implements Initializable {
+    
+    
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     @FXML
     private ImageView qrvVew;
@@ -38,7 +57,10 @@ public class Commande_verifController implements Initializable {
     @FXML
     private Button verifbtn;
     
+    CommandeService pscom = new CommandeService();
+    
       String myWeb=Turbooo_devs.myWeb2;
+      User user = new User();
 
     /**
      * Initializes the controller class.
@@ -87,9 +109,29 @@ public class Commande_verifController implements Initializable {
     }    
 
     @FXML
-    private void verifbtnaction(ActionEvent event) {
+    private void verifbtnaction(ActionEvent event) throws IOException {
         if(veriftxt.getText().equals(myWeb))
-            System.out.println("true");
+        {
+            for(panier p : Turbooo_devs.pan)
+            {
+                commande c  = new commande(user,p.getProd(),p.getPrix(),p.getQte(),1,p.getTaille());
+                pscom.ajouter(c);
+                
+            }
+            Turbooo_devs.pan.clear();
+            Alert alert = new Alert(AlertType.INFORMATION);
+           alert.setTitle("Commande Ajuter");
+           alert.setContentText("Votre commande est ajouter avec succes ");
+            
+            Optional <ButtonType> result = alert.showAndWait();
+            if(result.isPresent() && result.get() ==ButtonType.OK){
+                Parent root = FXMLLoader.load(getClass().getResource("Shop.fxml"));
+   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+   scene = new Scene(root);
+   stage.setScene(scene);
+   stage.show();
+            }
+        }
     }
     
 }

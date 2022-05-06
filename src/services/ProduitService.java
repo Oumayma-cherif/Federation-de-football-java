@@ -165,15 +165,21 @@ ObservableList<produit> personnes = FXCollections.observableArrayList();
     
     
     
-    public ObservableList<produit> filter(int pr , String color,String categorie) {
+    public ObservableList<produit> filter(int pr , String color,String categorie,String nom) {
 ObservableList<produit> personnes = FXCollections.observableArrayList();
 
+        System.out.println("nommmmmmmmmmmmmmmm: "+nom );
+        System.out.println("prrrrrrrrrrrrrrrrr: "+pr );
+        System.out.println("catttttttttttttttt: "+categorie );
+        System.out.println("collllllllllllllll: "+color );
+       
+        
         try {
             if(categorie!="")
             {
-            if(pr==1 && color!="")
+            if(pr==1 && color!="" && nom!="")
             {
-            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where p.couleur like '"+"%"+ color +"%" + "' and c.type_c like '"+  categorie  + "' order by prix ";
+            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where p.couleur like '"+"%"+ color +"%" + "' and c.type_c like '"+  categorie  + "' and p.nom_p like '"+"%"+  nom  + "%"+"' order by prix ";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             
@@ -205,9 +211,81 @@ ObservableList<produit> personnes = FXCollections.observableArrayList();
             }
             
             
-              if(pr==2 && color!="")
+            if(pr==1 && color!="" && nom=="")
             {
-            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where p.couleur like '"+"%"+ color +"%" + "' and c.type_c like '"+  categorie  + "' order by prix desc";
+            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where p.couleur like '"+"%"+ color +"%" + "' and c.type_c like '"+  categorie  + "'  order by prix ";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            
+            
+            while (rs.next()) {
+              
+                produit p = new produit();
+                
+                p.setId(rs.getInt("id"));
+                p.setNom(rs.getString("nom_p"));
+                p.setCouleur(rs.getString("couleur"));
+                p.setTaille(rs.getString("taille"));
+                p.setTaille2(rs.getString("taille2"));
+                p.setDesc(rs.getString("descr"));
+                p.setImg(rs.getString("img"));
+                p.setPrix(rs.getFloat("prix"));
+                p.setQte(rs.getInt("qte"));
+                
+               
+        
+            categories cat = new categories(rs.getInt("categorie_id"),rs.getString("type_c")); 
+            marques mar = new marques(rs.getInt("marquep_id"),rs.getString("nom_m"));
+            
+                p.setCat(cat);
+                p.setMar(mar);
+                
+                personnes.add(p);
+            }
+            }
+            
+            
+             if(pr==1 && color=="" && nom!="")
+            {
+            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where  c.type_c like '"+  categorie  + "' and p.nom_p like '"+"%"+  nom  + "%"+"' order by prix ";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            
+            
+            while (rs.next()) {
+              
+                produit p = new produit();
+                
+                p.setId(rs.getInt("id"));
+                p.setNom(rs.getString("nom_p"));
+                p.setCouleur(rs.getString("couleur"));
+                p.setTaille(rs.getString("taille"));
+                p.setTaille2(rs.getString("taille2"));
+                p.setDesc(rs.getString("descr"));
+                p.setImg(rs.getString("img"));
+                p.setPrix(rs.getFloat("prix"));
+                p.setQte(rs.getInt("qte"));
+                
+               
+        
+            categories cat = new categories(rs.getInt("categorie_id"),rs.getString("type_c")); 
+            marques mar = new marques(rs.getInt("marquep_id"),rs.getString("nom_m"));
+            
+                p.setCat(cat);
+                p.setMar(mar);
+                
+                personnes.add(p);
+            }
+            }
+
+         
+         
+   
+            
+           
+            if(pr==2 && color=="" && nom!="")
+            {
+            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where c.type_c like '"+  categorie  + "' and p.nom_p like '"+"%"+  nom  + "%"+ "' ";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             
@@ -238,7 +316,7 @@ ObservableList<produit> personnes = FXCollections.observableArrayList();
             }
             }
               
-               if(pr==1 && color=="")
+               if(pr==1 && color=="" && nom=="")
             {
             String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where c.type_c like  '"+  categorie  + "' order by prix ";
             Statement st = cnx.createStatement();
@@ -271,10 +349,13 @@ ObservableList<produit> personnes = FXCollections.observableArrayList();
             }
             }
                
+             
                
-               if(pr==0 && color=="")
+               
+              if(pr==2 && color=="" && nom=="")
             {
-            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where c.type_c like  '"+  categorie  + "' order by prix desc ";
+                System.out.println("kol vide");
+            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where c.type_c like '"+  categorie  + "'  ";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             
@@ -306,9 +387,9 @@ ObservableList<produit> personnes = FXCollections.observableArrayList();
             }
                
                
-               if(pr==2 && color=="")
+               if(pr==0 && color!="" && nom!="")
             {
-            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where c.type_c like '"+  categorie  + "' order by prix desc ";
+            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where p.couleur like '"+"%"+ color +"%" + "' and c.type_c like '"+  categorie  + "' and p.nom_p like '"+"%"+  nom  + "%" + "' order by prix desc ";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             
@@ -340,7 +421,76 @@ ObservableList<produit> personnes = FXCollections.observableArrayList();
             }
                
                
-                if(pr==0 && color!="")
+               if(pr==0 && color!="" && nom=="")
+            {
+            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where p.couleur like '"+"%"+ color +"%" + "' and c.type_c like '"+  categorie  + "'  order by prix desc ";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            
+            
+            while (rs.next()) {
+              
+                produit p = new produit();
+                
+                p.setId(rs.getInt("id"));
+                p.setNom(rs.getString("nom_p"));
+                p.setCouleur(rs.getString("couleur"));
+                p.setTaille(rs.getString("taille"));
+                p.setTaille2(rs.getString("taille2"));
+                p.setDesc(rs.getString("descr"));
+                p.setImg(rs.getString("img"));
+                p.setPrix(rs.getFloat("prix"));
+                p.setQte(rs.getInt("qte"));
+                
+               
+        
+            categories cat = new categories(rs.getInt("categorie_id"),rs.getString("type_c")); 
+            marques mar = new marques(rs.getInt("marquep_id"),rs.getString("nom_m"));
+            
+                p.setCat(cat);
+                p.setMar(mar);
+                
+                personnes.add(p);
+            }
+            }
+               
+               
+                  if(pr==0 && color=="" && nom=="")
+            {
+            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where  c.type_c like '"+  categorie  + "' order by prix desc ";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            
+            
+            while (rs.next()) {
+              
+                produit p = new produit();
+                
+                p.setId(rs.getInt("id"));
+                p.setNom(rs.getString("nom_p"));
+                p.setCouleur(rs.getString("couleur"));
+                p.setTaille(rs.getString("taille"));
+                p.setTaille2(rs.getString("taille2"));
+                p.setDesc(rs.getString("descr"));
+                p.setImg(rs.getString("img"));
+                p.setPrix(rs.getFloat("prix"));
+                p.setQte(rs.getInt("qte"));
+                
+               
+        
+            categories cat = new categories(rs.getInt("categorie_id"),rs.getString("type_c")); 
+            marques mar = new marques(rs.getInt("marquep_id"),rs.getString("nom_m"));
+            
+                p.setCat(cat);
+                p.setMar(mar);
+                
+                personnes.add(p);
+            }
+            }
+               
+               
+               
+               if(pr==2 && color!="" && nom=="")
             {
             String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where p.couleur like '"+"%"+ color +"%" + "' and c.type_c like '"+  categorie  + "' ";
             Statement st = cnx.createStatement();
@@ -372,8 +522,79 @@ ObservableList<produit> personnes = FXCollections.observableArrayList();
                 personnes.add(p);
             }
             }
+               
+               
+               
+                if(pr==2 && color!="" && nom!="")
+            {
+            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where p.couleur like '"+"%"+ color +"%" + "' and c.type_c like '"+  categorie  + "' and p.nom_p like '"+"%"+  nom  + "%" + "' ";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            
+            
+            while (rs.next()) {
+              
+                produit p = new produit();
+                
+                p.setId(rs.getInt("id"));
+                p.setNom(rs.getString("nom_p"));
+                p.setCouleur(rs.getString("couleur"));
+                p.setTaille(rs.getString("taille"));
+                p.setTaille2(rs.getString("taille2"));
+                p.setDesc(rs.getString("descr"));
+                p.setImg(rs.getString("img"));
+                p.setPrix(rs.getFloat("prix"));
+                p.setQte(rs.getInt("qte"));
+                
+               
+        
+            categories cat = new categories(rs.getInt("categorie_id"),rs.getString("type_c")); 
+            marques mar = new marques(rs.getInt("marquep_id"),rs.getString("nom_m"));
+            
+                p.setCat(cat);
+                p.setMar(mar);
+                
+                personnes.add(p);
+            }
+            }
+               
+        
                 
             }//categorie
+            if(categorie=="")
+            {
+            if(pr==2 && color=="" && nom!="")
+            {
+            String req = "select c.*,p.*,m.* from produit p inner join categorie c on p.categorie_id=c.id inner join marques m on p.marquep_id=m.id where p.nom_p like '"+"%"+  nom  + "%" + "'  ";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            
+            
+            while (rs.next()) {
+              
+                produit p = new produit();
+                
+                p.setId(rs.getInt("id"));
+                p.setNom(rs.getString("nom_p"));
+                p.setCouleur(rs.getString("couleur"));
+                p.setTaille(rs.getString("taille"));
+                p.setTaille2(rs.getString("taille2"));
+                p.setDesc(rs.getString("descr"));
+                p.setImg(rs.getString("img"));
+                p.setPrix(rs.getFloat("prix"));
+                p.setQte(rs.getInt("qte"));
+                
+               
+        
+            categories cat = new categories(rs.getInt("categorie_id"),rs.getString("type_c")); 
+            marques mar = new marques(rs.getInt("marquep_id"),rs.getString("nom_m"));
+            
+                p.setCat(cat);
+                p.setMar(mar);
+                
+                personnes.add(p);
+            }
+            }}
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

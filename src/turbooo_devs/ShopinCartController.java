@@ -22,6 +22,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -52,6 +53,8 @@ public class ShopinCartController implements Initializable {
     private Parent root;
     @FXML
     private Button commande;
+    @FXML
+    private Label prodvide;
    
 
     /**
@@ -61,6 +64,14 @@ public class ShopinCartController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
+        if (Turbooo_devs.pan.size()==0)
+        {
+            prodvide.setText("Panier vide");
+             commande.setVisible(false);
+        }
+            else
+         prodvide.setText("Votre Produits:");  
+            
         showpanier();
     }    
  

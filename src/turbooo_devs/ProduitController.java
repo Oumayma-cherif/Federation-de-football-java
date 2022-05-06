@@ -30,6 +30,7 @@ import java.io.OutputStream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -41,6 +42,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.util.converter.FloatStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import javax.swing.ImageIcon;
@@ -50,6 +52,11 @@ import services.CategorieService;
 import services.CommandeService;
 import services.MarqueService;
 import services.ProduitService;
+
+import org.controlsfx.control.*;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -165,6 +172,7 @@ public class ProduitController implements Initializable {
      float prix2;
     
     
+    
     /**
      * Initializes the controller class.
      */
@@ -172,12 +180,47 @@ public class ProduitController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
       // TODO
    
+      
       tableprod.setEditable(true);
       nomprod.setCellFactory(TextFieldTableCell.forTableColumn());
       quantiteprod.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
       prixprod.setCellFactory(TextFieldTableCell.forTableColumn(new FloatStringConverter()));
-    
+      
+      for(produit prod : psprod.recuperer())
+      {
+          if(prod.getQte()==0)
+          {
      
+      
+      TrayNotification tray  = new TrayNotification();
+      AnimationType type = AnimationType.POPUP;
+      tray.setAnimationType(type);
+      tray.setTitle("Produit en rupture de stock");
+      tray.setMessage("Produit  " + prod.getId() + " avec le nom: "+ prod.getNom()+ "  quantite egale a 0.");
+      tray.setNotificationType(NotificationType.WARNING);
+      Image image = new Image(prod.getImg());
+      tray.setImage(image);
+      tray.showAndDismiss(Duration.millis(100000));
+      
+      
+     
+          }
+          
+      }
+      
+      
+      
+     
+      
+      
+      
+     /* .title("Produit en rupture de stock")
+      .text("Produit numero: est en quantite egale a 0."  )
+      .hideAfter(Duration.seconds(5))
+      .position(Pos.BOTTOM_RIGHT);
+       notificationBuilder.darkStyle();
+       notificationBuilder.show();*/
+      
       
       
         ObservableList<String> listc =  FXCollections.observableArrayList();
@@ -224,6 +267,9 @@ public class ProduitController implements Initializable {
       prixprod.setCellValueFactory(new PropertyValueFactory<produit,Float>("prix"));
 
         tableprod.setItems(psprod.recuperer());
+        
+        
+      
     }
     
     
@@ -653,6 +699,8 @@ public class ProduitController implements Initializable {
          String prix = String.valueOf(prix1);
          tfprix.setText(prix);
     }
+
+    
 
   
    

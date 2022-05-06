@@ -35,6 +35,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
@@ -88,6 +89,8 @@ public class ShopController implements Initializable {
     String col1="";
     String prix1="";
     String taille1="";
+    String nom1="";
+    
     @FXML
     private Button filter;
     @FXML
@@ -106,6 +109,10 @@ public class ShopController implements Initializable {
     private TextField quantitetxt;
     @FXML
     private Button Add;
+    @FXML
+    private TextField searchtxt;
+    @FXML
+    private Label countlbl;
     
  
     private void setchosenproduit(produit prod)
@@ -129,7 +136,14 @@ public class ShopController implements Initializable {
         // TODO
        
          Image image1;
+         
+         
      
+      String size = String.valueOf(Turbooo_devs.pan.size());
+      countlbl.setText(size);
+      
+         
+      
             
             image1 = new Image("/AhmedImages/ic_cart.png");
             cart.setImage(image1);
@@ -289,21 +303,21 @@ public class ShopController implements Initializable {
         {
             if(prix1=="Croissant")
             {
-            showshop(psprod.filter(1, col1, cat1));
+            showshop(psprod.filter(1, col1, cat1,nom1));
                 System.out.println("tes1" + col1 + cat1);
-                System.out.println(psprod.filter(1, col1, cat1));
+                System.out.println(psprod.filter(1, col1, cat1,nom1));
             }
             else if(prix1=="Decroissant")
             {
-            showshop(psprod.filter(0, col1, cat1));
+            showshop(psprod.filter(0, col1, cat1,nom1));
              System.out.println("tes2" + col1 + cat1);
-             System.out.println(psprod.filter(0, col1, cat1));
+             System.out.println(psprod.filter(0, col1, cat1,nom1));
             }
             else
             {
-             showshop(psprod.filter(2, col1, cat1));
-              System.out.println("tes3" + col1 + cat1);
-                System.out.println(psprod.filter(2, col1, cat1));
+             showshop(psprod.filter(2, col1, cat1,nom1));
+              System.out.println("tes3" + col1 + cat1 );
+                System.out.println(psprod.filter(2, col1, cat1,nom1));
 
             }   
         }
@@ -378,9 +392,27 @@ public class ShopController implements Initializable {
         panier p = new panier(taille1,qte2,prod2.getPrix()*qte2,prod2);
         Turbooo_devs.pan.add(p);
         System.out.println(Turbooo_devs.pan);
+        String size = String.valueOf(Turbooo_devs.pan.size());
+        countlbl.setText(size);
   } 
   
   }
+
+    @FXML
+    private void searchtxtaction(ActionEvent event) {
+       
+        System.out.println(event.getTarget().toString());
+        
+        System.out.println("here");
+    }
+
+    @FXML
+    private void searchtxtaction2(KeyEvent event) {
+      nom1= event.getText();
+        System.out.println(nom1);
+       showshop(psprod.filter(2, col1, cat1,nom1));
+    }
+    
     
     
 }

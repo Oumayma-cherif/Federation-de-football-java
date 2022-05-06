@@ -79,7 +79,7 @@ public class HomaAhmedController implements Initializable {
     @FXML
     private void switchtoshop(ActionEvent event) throws IOException {
     
-        Parent root = FXMLLoader.load(getClass().getResource("Shop.fxml"));
+   Parent root = FXMLLoader.load(getClass().getResource("Shop.fxml"));
    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
    scene = new Scene(root);
    stage.setScene(scene);

@@ -4,8 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Lord/Documents/NetBeansProjects/turbooo_devs/src/turbooo_devs/Cart_itemController.java</file>
+            <file>file:/C:/Users/Lord/Documents/NetBeansProjects/turbooo_devs/src/turbooo_devs/HomaAhmedController.java</file>
+            <file>file:/C:/Users/Lord/Documents/NetBeansProjects/turbooo_devs/src/services/CategorieService.java</file>
+            <file>file:/C:/Users/Lord/Documents/NetBeansProjects/turbooo_devs/src/entities/produit.java</file>
             <file>file:/C:/Users/Lord/Documents/NetBeansProjects/turbooo_devs/src/turbooo_devs/Commande_verifController.java</file>
             <file>file:/C:/Users/Lord/Documents/NetBeansProjects/turbooo_devs/src/valuesShop/shop.css</file>
+            <file>file:/C:/Users/Lord/Documents/NetBeansProjects/turbooo_devs/src/turbooo_devs/ShopController.java</file>
+            <file>file:/C:/Users/Lord/Documents/NetBeansProjects/turbooo_devs/src/util/MyDB.java</file>
             <file>file:/C:/Users/Lord/Documents/NetBeansProjects/turbooo_devs/src/turbooo_devs/ShopinCartController.java</file>
         </group>
     </open-files>

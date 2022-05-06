@@ -43,7 +43,7 @@
                         <Insets left="30.0" right="30.0" />
                      </VBox.margin>
                      <children>
-                        <TextField prefHeight="40.0" prefWidth="230.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../valuesShop/shop.css">
+                        <TextField fx:id="searchtxt" onAction="#searchtxtaction" onKeyPressed="#searchtxtaction2" prefHeight="40.0" prefWidth="230.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../valuesShop/shop.css">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
@@ -143,7 +143,7 @@
                         <ImageView fx:id="cart" fitHeight="50.0" fitWidth="200.0" onMousePressed="#Cartaction" pickOnBounds="true" preserveRatio="true" />
                         <VBox alignment="TOP_CENTER" prefHeight="52.0" prefWidth="26.0" styleClass="search-box" stylesheets="@../valuesShop/shop.css">
                            <children>
-                              <Label prefHeight="20.0" prefWidth="0.0" stylesheets="@../valuesShop/shop.css" text="0" textFill="RED" />
+                              <Label fx:id="countlbl" prefHeight="20.0" prefWidth="0.0" stylesheets="@../valuesShop/shop.css" textFill="RED" />
                            </children>
                            <HBox.margin>
                               <Insets bottom="14.0" top="28.0" />
