@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="458.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication1.HomaAhmedController">
+    <children>
+      <VBox layoutX="261.0" layoutY="29.0" prefHeight="221.0" prefWidth="100.0" spacing="10.0" />
+      <Button fx:id="categories" layoutX="274.0" layoutY="92.0" mnemonicParsing="false" onAction="#switchtocategories" text="Categories" />
+      <Button fx:id="marques" layoutX="274.0" layoutY="136.0" mnemonicParsing="false" onAction="#switchtomarques" prefHeight="25.0" prefWidth="73.0" text="Marques" />
+      <Button fx:id="produits" layoutX="272.0" layoutY="42.0" mnemonicParsing="false" onAction="#switchtoproduits" prefHeight="31.0" prefWidth="73.0" text="Produits" />
+      <Button fx:id="shopbtn" layoutX="272.0" layoutY="185.0" mnemonicParsing="false" onAction="#switchtoshop" prefHeight="25.0" prefWidth="73.0" text="Shop" />
+   </children>
+</AnchorPane>
