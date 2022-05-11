@@ -90,7 +90,7 @@ public class ArticleDetailController implements Initializable {
     private ImageView rollback;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         Image image1 = new Image("/AhmedImages/out.png");
+        Image image1 = new Image("/AhmedImages/out.png");
             rollback.setImage(image1);
        ServiceInteraction st = new ServiceInteraction();
         if(st.recupererLike(ArticleFrontController.current_id.getId(),session.getSession().getId()))     

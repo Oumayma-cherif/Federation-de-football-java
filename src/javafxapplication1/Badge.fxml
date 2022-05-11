@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="857.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication1.BadgeController">
@@ -26,5 +27,6 @@
       <Label fx:id="badgeimg" layoutX="37.0" layoutY="142.0" prefHeight="40.0" prefWidth="155.0" />
       <Button fx:id="remove" layoutX="22.0" layoutY="347.0" mnemonicParsing="false" onAction="#onremove" text="Remove" />
       <TextField fx:id="searchbar" layoutX="616.0" layoutY="26.0" onInputMethodTextChanged="#oneditsearchbar" />
+      <ImageView fx:id="rollback" fitHeight="33.0" fitWidth="32.0" layoutX="12.0" layoutY="10.0" onMouseClicked="#rollback" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

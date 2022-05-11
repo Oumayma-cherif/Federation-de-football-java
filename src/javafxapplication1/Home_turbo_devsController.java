@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -38,6 +39,12 @@ public class Home_turbo_devsController implements Initializable {
     private Button loginb;
     @FXML
     private ImageView shopv;
+    @FXML
+    private ImageView contactusb;
+    @FXML
+    private ImageView homeb;
+    @FXML
+    private ImageView dashboard;
 
     /**
      * Initializes the controller class.
@@ -45,15 +52,26 @@ public class Home_turbo_devsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
         Image image1 = new Image("/AhmedImages/articlej.png");
             articlevf.setImage(image1);
             image1 = new Image("/AhmedImages/Shop.jpg");
              shopv.setImage(image1);
+               image1 = new Image("/AhmedImages/contact.png");
+               contactusb.setImage(image1);
+               
+                image1 = new Image("/AhmedImages/home2.png");
+            homeb.setImage(image1);
+            
       //  articlevf.
       if(session.getSession().getId()!=0)
       {
           loginb.setText("Logged");
+          if(session.getSession().getRole().toUpperCase().equals("ADMIN"))
+          {
+              image1 = new Image("/AhmedImages/dashboard.png");
+           dashboard.setImage(image1);
+          }
+           
       }
     }    
    
@@ -95,6 +113,43 @@ public class Home_turbo_devsController implements Initializable {
    stage.setScene(scene);
    stage.setTitle("Shop");
    stage.show();
+        
+    }
+
+    @FXML
+    private void contactusb(MouseEvent event) throws IOException {
+        if(session.getSession().getId()!= 0)
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("/gui/frontofficeForm.fxml"));
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+   stage.setScene(scene);
+   stage.setTitle("Contact Us");
+   stage.show(); 
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+alert.setTitle("Error");
+alert.setHeaderText("Connection Error");
+alert.setContentText("you must connect first !");
+
+alert.showAndWait();
+        }
+        
+    }
+
+    @FXML
+    private void dashboard(MouseEvent event) throws IOException {
+        if(session.getSession().getId()!= 0 && session.getSession().getRole().toUpperCase().equals("ADMIN"))
+        {
+             Parent root = FXMLLoader.load(getClass().getResource("MainBack.fxml"));
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+   stage.setScene(scene);
+   stage.setTitle("Contact Us");
+   stage.show(); 
+        }
         
     }
 }

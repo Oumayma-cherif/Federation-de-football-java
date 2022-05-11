@@ -15,6 +15,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -36,13 +39,14 @@ public class HomaAhmedController implements Initializable {
     @FXML
     private Button produits;
     @FXML
-    private Button shopbtn;
+    private ImageView rollback;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+         Image image1 = new Image("/AhmedImages/out.png");
+            rollback.setImage(image1);
     }    
 
    @FXML
@@ -76,7 +80,6 @@ public class HomaAhmedController implements Initializable {
 
     }
 
-    @FXML
     private void switchtoshop(ActionEvent event) throws IOException {
     
    Parent root = FXMLLoader.load(getClass().getResource("Shop.fxml"));
@@ -85,6 +88,16 @@ public class HomaAhmedController implements Initializable {
    stage.setScene(scene);
    stage.show();
         
+    }
+
+    @FXML
+    private void rollback(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/javafxapplication1/MainBack.fxml"));
+   Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+   Scene scene = new Scene(root);
+   stage.setScene(scene);
+   stage.setTitle("Main");
+   stage.show();
     }
     
 }

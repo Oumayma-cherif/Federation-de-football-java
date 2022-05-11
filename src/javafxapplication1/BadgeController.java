@@ -25,8 +25,12 @@ import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -82,49 +86,26 @@ public class BadgeController implements Initializable {
     private Button remove;
     @FXML
     private TextField searchbar;
+    @FXML
+    private ImageView rollback;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+         Image image1 = new Image("/AhmedImages/out.png");
+            rollback.setImage(image1);
         showBadges();
         tabB.setEditable(true);
         nomB.setCellFactory(TextFieldTableCell.forTableColumn());
         searchbar.textProperty().addListener((o, oldVal, newVal) -> {
     searchbadges(newVal);
     });
-     //   searchbar.textFormatterProperty().addListener(listener);
-        /*
-        searchbar.textFormatterProperty().addListener(
-                {
-                    @Override
-                    public void changed(ObservableValue <? extends String> observable , String oldValue,String newValue)
-                    {
-                        try{
-                            
-                        }catch(IOException ex)
-                        {
-                            
-                        }
-                    }
-        
-    });*/
-        /*
-          nbB.setCellFactory(new Callback<TableColumn<Badge, Number>, TableCell<Badge, Number>>() {
-            @Override
-            public TableCell<Badge, Number> call(TableColumn<Badge, Number> param) {
-                
-            }
-          });*/
-        
-        
-        
-  
+   
        
     } 
-    //onEditChangelogoB
-    //onremove
+    
     
     
     @FXML
@@ -132,22 +113,25 @@ public class BadgeController implements Initializable {
        Badge b = tabB.getSelectionModel().getSelectedItem();
        psm.supprimer(b.getId());
       showBadges();
-//b.setLogoB(badgeStringCellEditEvent.getNewValue());
 
-    }@FXML
-        public void onEditChangelogoB(TableColumn.CellEditEvent<Badge,String> badgeStringCellEditEvent)
+    }   
+     @FXML
+    public void onEditChangelogoB(TableColumn.CellEditEvent<Badge,String> badgeStringCellEditEvent)
 {
 Badge b = tabB.getSelectionModel().getSelectedItem();
 b.setLogoB(badgeStringCellEditEvent.getNewValue());
 psm.modifier(b);
-}@FXML
-    public void onEditChangenomB(TableColumn.CellEditEvent<Badge,String> badgeStringCellEditEvent)
+
+}
+ @FXML
+ public void onEditChangenomB(TableColumn.CellEditEvent<Badge,String> badgeStringCellEditEvent)
 {
 Badge b = tabB.getSelectionModel().getSelectedItem();
 b.setNomB(badgeStringCellEditEvent.getNewValue());
 psm.modifier(b);
-}@FXML
-    public void onEditChangenbB(TableColumn.CellEditEvent<Badge,Number> badgeStringCellEditEvent)
+} 
+  @FXML
+ public void onEditChangenbB(TableColumn.CellEditEvent<Badge,Number> badgeStringCellEditEvent)
 {
 
 
@@ -298,8 +282,7 @@ alert.showAndWait();
         tabB.setItems(psm.rec_search(x));
     }
 
-
- @FXML
+    @FXML
     private void onEditStartlogoB(TableColumn.CellEditEvent<Badge, String> event) {
         FileChooser fileChooser = new FileChooser();
 
@@ -342,6 +325,18 @@ alert.showAndWait();
     private void oneditsearchbar(InputMethodEvent event) {
        
         tabB.setItems(psm.rec_search(event.toString()));
+    }
+
+   
+
+    @FXML
+    private void rollback(MouseEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("/javafxapplication1/MainBack.fxml"));
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+   stage.setScene(scene);
+   stage.setTitle("Main");
+   stage.show();
     }
 
    

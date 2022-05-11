@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="442.0" prefWidth="662.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication1.MainBackController">
+   <children>
+      <ImageView fx:id="rollback" fitHeight="35.0" fitWidth="41.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#rollback" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="articles" fitHeight="64.0" fitWidth="80.0" layoutX="135.0" layoutY="83.0" onMouseClicked="#articles" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="users" fitHeight="57.0" fitWidth="80.0" layoutX="35.0" layoutY="90.0" onMouseClicked="#users" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="badges" fitHeight="64.0" fitWidth="80.0" layoutX="244.0" layoutY="83.0" onMouseClicked="#badges" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="shopb" fitHeight="64.0" fitWidth="80.0" layoutX="344.0" layoutY="83.0" onMouseClicked="#shopb" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
