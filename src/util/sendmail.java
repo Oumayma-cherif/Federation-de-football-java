@@ -26,8 +26,8 @@ public class sendmail {
   
         String from = "aaa@gmail.com";
         String host = "smtp.gmail.com";
-        final String username = "aaa@gmail.com";
-        final String password = "aaa";
+        final String username = "@gmail.com";
+        final String password = "";
 
         //setup mail server
 

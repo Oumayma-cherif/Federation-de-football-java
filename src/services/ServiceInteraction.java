@@ -26,6 +26,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import util.MyDB;
+import util.session;
 
 /**
  *
@@ -34,7 +35,7 @@ import util.MyDB;
 public class ServiceInteraction implements IService<Interaction> {
 
     Connection cnx;
-    
+    ServiceUser su = new ServiceUser();
     public ServiceInteraction() {
         cnx = MyDB.getInstance().getConnection();
     }
@@ -48,6 +49,48 @@ public class ServiceInteraction implements IService<Interaction> {
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("interaction ajoutée");
+            if(t.getType().equals("comment"))
+            {
+                 String req2 = "update user set nbp = nbp+1 where id = ?";
+                  PreparedStatement ps = cnx.prepareStatement(req2);
+            ps.setInt(1, t.getUser().getId());
+            ps.executeUpdate();
+            
+                System.out.println(t.getUser().getNbp()+1);
+                 String req3 = "select * from badge where nb <= '" + t.getUser().getNbp()+1 + "' order by nb desc";
+           
+            
+          // Statement st3 = cnx.createStatement();
+         // PreparedStatement st = cnx.prepareStatement(req);
+            //  st.setInt(1, idarticle);
+            ResultSet rs3 = st.executeQuery(req3);
+            
+            if(rs3.next()) {
+                
+                 Badge p = new Badge();
+                p.setId(rs3.getInt(1));
+                p.setNomB(rs3.getString("nom_b"));
+                p.setLogoB(rs3.getString("logo_b"));
+                 FileInputStream inputStream;
+                try {
+                        inputStream = new FileInputStream(Badge.url_upload + rs3.getString("logo_b"));
+                    //   inputStream = new FileInputStream("src/voyagep.png");
+                    Image image = new Image(inputStream);
+                    //   imgViewV = new ImageView(image);
+                    p.setImg(image);
+
+                } catch (FileNotFoundException ex) {
+                   // Logger.getLogger(ReclamationFormController.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
+                p.setNb(rs3.getInt("nb"));
+                session.getSession().setBadge(p);
+                su.modifier( session.getSession());
+                
+            
+                
+            }
+            }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -202,19 +245,7 @@ public class ServiceInteraction implements IService<Interaction> {
         }
         return true;
     }
-    /*
-     public void addlike(Interaction t) {
-        try {
-            String req = "insert into interaction(descrp,user_id,type,article_id)"
-                    + "values( '" + t.getDescrp() + "','" + t.getUser().getId() + "','" + t.getType() + "',"
-                    + t.getArticle().getId() + " )";
-            Statement st = cnx.createStatement();
-            st.executeUpdate(req);
-            System.out.println("interaction ajoutée");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }*/
+    
     
     public boolean recupererLike(int idarticle,int user_id) {
         

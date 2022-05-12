@@ -6,12 +6,13 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="753.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication1.ProduitController">
+<AnchorPane id="AnchorPane" prefHeight="753.0" prefWidth="1010.0" style="-fx-background-color: #d1e0e0;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication1.ProduitController">
    <children>
       <VBox layoutX="93.0" layoutY="14.0" prefHeight="515.0" prefWidth="169.0" spacing="2.0">
          <children>
@@ -52,9 +53,9 @@
             <Label text="Image:" />
          </children>
       </VBox>
-      <Button fx:id="btninsert" layoutX="49.0" layoutY="538.0" mnemonicParsing="false" onAction="#insertproduit" text="Insert" />
-      <Button fx:id="btnupdate" layoutX="116.0" layoutY="538.0" mnemonicParsing="false" onAction="#updateproduit" text="Update" />
-      <Button fx:id="btndelete" layoutX="189.0" layoutY="538.0" mnemonicParsing="false" onAction="#deleteproduit" text="Delete" />
+      <Button fx:id="btninsert" layoutX="49.0" layoutY="538.0" mnemonicParsing="false" onAction="#insertproduit" style="-fx-background-color: #66ccff;" text="Insert" />
+      <Button fx:id="btnupdate" layoutX="146.0" layoutY="538.0" mnemonicParsing="false" onAction="#updateproduit" style="-fx-background-color: #3d9a31;" text="Update" />
+      <Button fx:id="btndelete" layoutX="255.0" layoutY="538.0" mnemonicParsing="false" onAction="#deleteproduit" style="-fx-background-color: #f52020;" text="Delete" />
       <TableView fx:id="tableprod" layoutX="300.0" layoutY="14.0" onMouseClicked="#prodclick" prefHeight="425.0" prefWidth="681.0">
         <columns>
           <TableColumn fx:id="idprod" prefWidth="75.0" text="Id" />
@@ -68,11 +69,31 @@
             <TableColumn fx:id="prixprod" onEditCommit="#prix_edit" prefWidth="78.0" text="Prix" />
         </columns>
       </TableView>
-      <Button fx:id="Homebtn" layoutX="568.0" layoutY="563.0" mnemonicParsing="false" onAction="#switchtohome" text="Home" />
-      <ImageView fx:id="imgview" fitHeight="150.0" fitWidth="200.0" layoutX="292.0" layoutY="454.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="Homebtn" layoutX="620.0" layoutY="548.0" mnemonicParsing="false" onAction="#switchtohome" prefHeight="40.0" prefWidth="113.0" style="-fx-background-color: #00cc99;" text="Home" />
+      <ImageView fx:id="imgview" fitHeight="150.0" fitWidth="200.0" layoutX="323.0" layoutY="459.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="pppp" layoutX="591.0" layoutY="460.0" textFill="#1aff09">
          <font>
             <Font name="Cambria" size="14.0" />
          </font></Label>
+      <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="14.0" layoutY="538.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ressources/img/icons8-plus-40.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="28.0" fitWidth="32.0" layoutX="111.0" layoutY="537.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ressources/img/icons8-hand-with-pen-64.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="28.0" fitWidth="32.0" layoutX="218.0" layoutY="537.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ressources/img/icons8-trash-48.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="41.0" layoutX="621.0" layoutY="553.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ressources/img/icons8-undo-64.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -88,6 +88,8 @@ public class BadgeController implements Initializable {
     private TextField searchbar;
     @FXML
     private ImageView rollback;
+    @FXML
+    private Button backkk;
     /**
      * Initializes the controller class.
      */
@@ -115,7 +117,7 @@ public class BadgeController implements Initializable {
       showBadges();
 
     }   
-     @FXML
+    @FXML
     public void onEditChangelogoB(TableColumn.CellEditEvent<Badge,String> badgeStringCellEditEvent)
 {
 Badge b = tabB.getSelectionModel().getSelectedItem();
@@ -123,14 +125,14 @@ b.setLogoB(badgeStringCellEditEvent.getNewValue());
 psm.modifier(b);
 
 }
- @FXML
+    @FXML
  public void onEditChangenomB(TableColumn.CellEditEvent<Badge,String> badgeStringCellEditEvent)
 {
 Badge b = tabB.getSelectionModel().getSelectedItem();
 b.setNomB(badgeStringCellEditEvent.getNewValue());
 psm.modifier(b);
 } 
-  @FXML
+ @FXML
  public void onEditChangenbB(TableColumn.CellEditEvent<Badge,Number> badgeStringCellEditEvent)
 {
 
@@ -281,8 +283,7 @@ alert.showAndWait();
         //tabB.setItems(psm.recuperer(0));
         tabB.setItems(psm.rec_search(x));
     }
-
-    @FXML
+@FXML
     private void onEditStartlogoB(TableColumn.CellEditEvent<Badge, String> event) {
         FileChooser fileChooser = new FileChooser();
 
@@ -337,6 +338,12 @@ alert.showAndWait();
    stage.setScene(scene);
    stage.setTitle("Main");
    stage.show();
+    }
+
+   
+
+    @FXML
+    private void backkk(ActionEvent event) {
     }
 
    

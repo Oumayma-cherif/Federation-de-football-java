@@ -6,12 +6,14 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="468.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication1.ArticleController">
+<AnchorPane id="AnchorPane" prefHeight="468.0" prefWidth="743.0" style="-fx-background-color: #d1e0e0;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication1.ArticleController">
    <children>
-      <TableView fx:id="taba" layoutX="34.0" layoutY="46.0" prefHeight="267.0" prefWidth="688.0">
+      <TableView fx:id="taba" layoutX="34.0" layoutY="73.0" prefHeight="240.0" prefWidth="688.0">
         <columns>
           <TableColumn fx:id="id" prefWidth="40.0" text="id" />
           <TableColumn fx:id="user_id" prefWidth="110.0" text="username" />
@@ -27,10 +29,35 @@
       <Label layoutX="50.0" layoutY="323.0" text="titre" />
       <Label layoutX="45.0" layoutY="378.0" text="descr" />
       <Label layoutX="365.0" layoutY="328.0" text="user" />
-      <Button fx:id="upload" layoutX="443.0" layoutY="371.0" mnemonicParsing="false" onAction="#onupload" text="Upload" />
+      <Button fx:id="upload" layoutX="443.0" layoutY="371.0" mnemonicParsing="false" onAction="#onupload" style="-fx-background-color: #3d9a31;" styleClass="buttonCRUD" text="Upload" />
       <Label fx:id="imglabel" layoutX="453.0" layoutY="328.0" />
-      <Button fx:id="save" layoutX="283.0" layoutY="412.0" mnemonicParsing="false" onAction="#onsave" text="Save" />
-      <Button fx:id="remove" layoutX="644.0" layoutY="325.0" mnemonicParsing="false" onAction="#onremove" text="remove" />
+      <Button fx:id="save" layoutX="283.0" layoutY="412.0" mnemonicParsing="false" onAction="#onsave" style="-fx-background-color: #66ccff;" text="Add" />
+      <Button fx:id="remove" layoutX="644.0" layoutY="325.0" mnemonicParsing="false" onAction="#onremove" style="-fx-background-color: #f52020;" styleClass="buttonCRUD" text="Delete" />
       <ImageView fx:id="rollback" fitHeight="39.0" fitWidth="41.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#rollback" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="28.0" fitWidth="32.0" layoutX="603.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ressources/img/icons8-trash-48.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="237.0" layoutY="413.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ressources/img/icons8-plus-40.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="88.0" layoutX="280.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ressources/img/icons8-hand-with-pen-64.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="341.0" layoutY="15.0" mouseTransparent="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="17.0" prefWidth="100.0" text="Article" textFill="#cd1111" textOverrun="WORD_ELLIPSIS">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="57.0" fitWidth="66.0" layoutX="62.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ressources/img/fedd.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

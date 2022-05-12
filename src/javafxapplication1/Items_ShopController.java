@@ -4,6 +4,7 @@
  */
 package javafxapplication1;
 
+import entities.Badge;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -80,7 +81,7 @@ public class Items_ShopController implements Initializable {
         prixlabel1.setText(prod.getPrix()+ "DT");
         Image image;
         try {
-            image = new Image(new FileInputStream(prod.getImg()));
+            image = new Image(new FileInputStream(Badge.url_upload +prod.getImg()));
             prodimg1.setImage(image);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Items_ShopController.class.getName()).log(Level.SEVERE, null, ex);

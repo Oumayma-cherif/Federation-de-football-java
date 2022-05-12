@@ -4,6 +4,7 @@
  */
 package javafxapplication1;
 
+import entities.Badge;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -27,8 +28,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Random;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -45,6 +48,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.util.converter.FloatStringConverter;
 import javafx.util.converter.IntegerStringConverter;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 
@@ -316,11 +320,28 @@ public class ProduitController implements Initializable {
 
     @FXML
     private void uploadimg(ActionEvent event) throws FileNotFoundException {
+        /*
          FileChooser fileChooser = new FileChooser();
+
+         File f = fileChooser.showOpenDialog(new Stage());*/
+        FileChooser fileChooser = new FileChooser();
+
+        //Set extension filter
+        FileChooser.ExtensionFilter extFilterJPG
+                = new FileChooser.ExtensionFilter("JPG files (*.JPG)", "*.JPG");
+        FileChooser.ExtensionFilter extFilterjpg
+                = new FileChooser.ExtensionFilter("jpg files (*.jpg)", "*.jpg");
+        FileChooser.ExtensionFilter extFilterPNG
+                = new FileChooser.ExtensionFilter("PNG files (*.PNG)", "*.PNG");
+        FileChooser.ExtensionFilter extFilterpng
+                = new FileChooser.ExtensionFilter("png files (*.png)", "*.png");
+        fileChooser.getExtensionFilters()
+                .addAll(extFilterJPG, extFilterjpg, extFilterPNG, extFilterpng);
 
          File f = fileChooser.showOpenDialog(new Stage());
 
-         tfimg.setText(f.toString());
+
+         tfimg.setText(f.getAbsoluteFile().toURI().toString());
        
       
        
@@ -471,10 +492,22 @@ public class ProduitController implements Initializable {
                 }
                 
     }
-    String image = tfimg.getText();
-     image = image.replace("\\", "\\\\");
+   
+     String nameImage;
+          
+
+            nameImage = generateRandomPassword(10) + ".png";
+              Image img3 = new Image(tfimg.getText());
+          
+            File file = new File(Badge.url_upload  + nameImage);
+
+            try {
+                ImageIO.write(SwingFXUtils.fromFXImage(img3, null), "png", file);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
     
-        produit prod = new produit(tfnom.getText(),t1,t2,tfdesc.getText(),image,col1,prixx,qtt,cats,marqs);
+        produit prod = new produit(tfnom.getText(),t1,t2,tfdesc.getText(),nameImage,col1,prixx,qtt,cats,marqs);
         psprod.ajouter(prod);
         
         showProduit();
@@ -629,11 +662,26 @@ public class ProduitController implements Initializable {
                 
     }
        String image = tfimg.getText();
+       String nameImage=tfimg.getText();
        if(!image.contains("\\"))
        {
          image = image.replace("\\", "\\\\");
        }
-        produit prod = new produit(id1,tfnom.getText(),t1,t2,tfdesc.getText(),image,col1,"2000-05-13",prixx,qtt,cats,marqs);
+       if(tfimg.getText().contains("file:/")){
+        //   tfimg.setText( generateRandomPassword(10) + ".png");
+        
+        nameImage = generateRandomPassword(10) + ".png";
+              Image img3 = new Image(tfimg.getText());
+          
+            File file = new File(Badge.url_upload  + nameImage);
+
+            try {
+                ImageIO.write(SwingFXUtils.fromFXImage(img3, null), "png", file);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+       }
+        produit prod = new produit(id1,tfnom.getText(),t1,t2,tfdesc.getText(),nameImage,col1,"2000-05-13",prixx,qtt,cats,marqs);
         psprod.modifier(prod);
         pppp.setText("Produit Updated");
         showProduit();
@@ -672,7 +720,7 @@ public class ProduitController implements Initializable {
          tfqte.setText(qte);
          tfprix.setText(prix);
          id1=prod.get(0).getId();
-           Image image = new Image(new FileInputStream(tfimg.getText()));
+           Image image = new Image(new FileInputStream(Badge.url_upload+tfimg.getText()));
            imgview.setImage(image);
                  
     }
@@ -699,6 +747,15 @@ public class ProduitController implements Initializable {
          String prix = String.valueOf(prix1);
          tfprix.setText(prix);
     }
+     public  String generateRandomPassword(int len) {
+		String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk"
+          +"lmnopqrstuvwxyz";
+		Random rnd = new Random();
+		StringBuilder sb = new StringBuilder(len);
+		for (int i = 0; i < len; i++)
+			sb.append(chars.charAt(rnd.nextInt(chars.length())));
+		return sb.toString();
+	}
 
     
 

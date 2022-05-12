@@ -51,6 +51,7 @@ public class ProfilFormController implements Initializable {
         if(!username.getText().equals("") && !role.getText().equals("") && !email.getText().equals("")) {
             ServiceUser us = new ServiceUser();
             User u = new User(session.getSession().getId(), username.getText(),session.getSession().getMdp(), role.getText(), email.getText());
+            u.setBadge(session.getSession().getBadge());
             session s = new session(u);
             us.modifier(u);
             Alert alertA = new Alert(Alert.AlertType.NONE,"Updated successful!",ButtonType.APPLY);

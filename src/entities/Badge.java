@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 public class Badge {
     private int id,nb;
     public static String url_upload = "C:\\Users\\ksaay\\Desktop\\anouer\\Federation-de-football-master-c\\public\\uploads\\img\\";
+    public static String url_upload2 = "C:\\Users\\ksaay\\Desktop\\anouer\\Federation-de-football-master-c\\public\\uploads\\";
     public Badge(int id, int nb, String nomB, String logoB) {
         this.id = id;
         this.nb = nb;

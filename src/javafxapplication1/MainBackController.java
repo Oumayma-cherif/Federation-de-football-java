@@ -35,6 +35,18 @@ public class MainBackController implements Initializable {
     private ImageView badges;
     @FXML
     private ImageView shopb;
+    @FXML
+    private ImageView tournements;
+    @FXML
+    private ImageView stadiums;
+    @FXML
+    private ImageView referee;
+    @FXML
+    private ImageView rewards;
+    @FXML
+    private ImageView club;
+    @FXML
+    private ImageView sponsor;
 
     /**
      * Initializes the controller class.
@@ -42,17 +54,28 @@ public class MainBackController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-          Image image1 = new Image("/AhmedImages/out.png");
-            rollback.setImage(image1);
+        /*
+          Image image1 ;
+          image1= new Image("/image/tournoi.png");
+          tournements.setImage(image1);
+          image1= new Image("/AhmedImages/st.png");
+          stadiums.setImage(image1);
+          image1= new Image("/AhmedImages/referee.png");
+          referee.setImage(image1);
+          image1= new Image("/AhmedImages/out.png");
+          
+          rollback.setImage(image1);
           image1 = new Image("/AhmedImages/users.png");
           users.setImage(image1);
-           image1 = new Image("/AhmedImages/aritj.jpg");
+           image1 = new Image("/AhmedImages/articlej.png");
           articles.setImage(image1);
           image1 = new Image("/AhmedImages/badge.png");
           badges.setImage(image1);
-          image1 = new Image("/AhmedImages/shop.jpg");
+          image1 = new Image("/AhmedImages/shop3.png");
           shopb.setImage(image1);
-            
+          image1 = new Image("/image/reward.png");
+          rewards.setImage(image1);
+            */
     }    
 
     @FXML
@@ -102,6 +125,67 @@ public class MainBackController implements Initializable {
             Scene scene = new Scene(root);
    stage.setScene(scene);
    stage.setTitle("Main");
+   stage.show();
+    }
+
+    @FXML
+    private void tournements(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/affichTournoi.fxml"));
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+   stage.setScene(scene);
+   stage.setTitle("Tournement");
+   stage.show();
+    }
+
+
+    @FXML
+    private void stadiums(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/afficher_stade.fxml"));
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+   stage.setScene(scene);
+   stage.setTitle("Main");
+   stage.show();
+    }
+
+    @FXML
+    private void referee(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/afficher_arbitre.fxml"));
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+   stage.setScene(scene);
+   stage.setTitle("Main");
+   stage.show();
+    }
+
+    @FXML
+    private void rewards(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/AffichRewards.fxml"));
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+   stage.setScene(scene);
+   stage.setTitle("Main");
+   stage.show();
+    }
+
+    @FXML
+    private void club(MouseEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("/views/Club.fxml"));
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+   stage.setScene(scene);
+   stage.setTitle("Club");
+   stage.show();
+    }
+
+    @FXML
+    private void sponsor(MouseEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("/views/Sponsor.fxml"));
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+   stage.setScene(scene);
+   stage.setTitle("Sponsor");
    stage.show();
     }
     

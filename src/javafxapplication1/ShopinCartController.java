@@ -21,6 +21,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -141,8 +142,17 @@ public class ShopinCartController implements Initializable {
 
     @FXML
     private void commandeaction(ActionEvent event) throws Exception{
-        if(session.getSession()!=null)
+        if(session.getSession().getId()!=0)
         sendMail(event);
+        else
+        {
+              Alert alert = new Alert(Alert.AlertType.INFORMATION);
+alert.setTitle("Error");
+alert.setHeaderText("Connection Error");
+alert.setContentText("you must connect first !");
+
+alert.showAndWait();
+        }
      // AhmedMail.sendMail("12355", "yaga77328@gmail.com");
         
         

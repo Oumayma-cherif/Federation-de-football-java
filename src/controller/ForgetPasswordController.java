@@ -16,6 +16,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import services.ServiceUser;
 
@@ -39,6 +42,8 @@ public class ForgetPasswordController implements Initializable {
     
     User user;
     int c;
+    @FXML
+    private ImageView rollback;
 
     /**
      * Initializes the controller class.
@@ -47,6 +52,8 @@ public class ForgetPasswordController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         apCode.setVisible(false);
         // TODO
+          Image image1 = new Image("/AhmedImages/out.png");
+            rollback.setImage(image1);
     }    
     ServiceUser us = new ServiceUser();
     @FXML
@@ -84,6 +91,10 @@ public class ForgetPasswordController implements Initializable {
     private void back(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/gui/signInForm.fxml"));
                 ap.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void rollback(MouseEvent event) {
     }
     
 }

@@ -36,8 +36,6 @@ public class Home_turbo_devsController implements Initializable {
     @FXML
     private ImageView articlevf;
     @FXML
-    private Button loginb;
-    @FXML
     private ImageView shopv;
     @FXML
     private ImageView contactusb;
@@ -45,6 +43,12 @@ public class Home_turbo_devsController implements Initializable {
     private ImageView homeb;
     @FXML
     private ImageView dashboard;
+    @FXML
+    private ImageView tournements;
+    @FXML
+    private ImageView loginv;
+    @FXML
+    private ImageView fakeback;
 
     /**
      * Initializes the controller class.
@@ -54,24 +58,34 @@ public class Home_turbo_devsController implements Initializable {
         // TODO
         Image image1 = new Image("/AhmedImages/articlej.png");
             articlevf.setImage(image1);
-            image1 = new Image("/AhmedImages/Shop.jpg");
+            image1 = new Image("/AhmedImages/shop3.png");
              shopv.setImage(image1);
                image1 = new Image("/AhmedImages/contact.png");
                contactusb.setImage(image1);
                
-                image1 = new Image("/AhmedImages/home2.png");
+               image1 = new Image("/image/tournoi.png");
+               tournements.setImage(image1);
+                image1 = new Image("/AhmedImages/home9.png");
             homeb.setImage(image1);
-            
+            image1 = new Image("/AhmedImages/fakeback.png");
+            fakeback.setImage(image1);
       //  articlevf.
       if(session.getSession().getId()!=0)
       {
-          loginb.setText("Logged");
+            image1 = new Image("/AhmedImages/out.png");
+          loginv.setImage(image1);
+         
           if(session.getSession().getRole().toUpperCase().equals("ADMIN"))
           {
               image1 = new Image("/AhmedImages/dashboard.png");
            dashboard.setImage(image1);
           }
            
+      }
+      else
+      {
+           image1 = new Image("/AhmedImages/enter.png");
+          loginv.setImage(image1);
       }
     }    
    
@@ -85,7 +99,7 @@ public class Home_turbo_devsController implements Initializable {
    stage.show();
     }
 
-    @FXML
+    /*
     private void loginb(ActionEvent event) throws IOException {
         if(loginb.getText()=="Logged")
         {
@@ -103,7 +117,7 @@ public class Home_turbo_devsController implements Initializable {
         }
                      
         
-    }
+    }*/
 
     @FXML
     private void shopv(MouseEvent event) throws IOException {
@@ -151,5 +165,33 @@ alert.showAndWait();
    stage.show(); 
         }
         
+    }
+
+    @FXML
+    private void tournements(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/TournoiFront.fxml"));
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+   stage.setScene(scene);
+   stage.setTitle("Tournement");
+   stage.show(); 
+    }
+
+    @FXML
+    private void loginv(MouseEvent event) throws IOException {
+         if(session.getSession().getId()!=0)
+        {
+            session.setSession(null);
+          //  loginb.setText("Login");
+        }
+        else
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("/gui/signInForm.fxml"));
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Login");
+            stage.show();
+    }
     }
 }

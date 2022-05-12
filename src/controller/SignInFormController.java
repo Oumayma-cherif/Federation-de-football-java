@@ -56,6 +56,8 @@ public class SignInFormController implements Initializable {
     	Alert alert = new Alert(Alert.AlertType.NONE);
     @FXML
     private ImageView rollback;
+    @FXML
+    private ImageView background;
 
 
     /**
@@ -66,6 +68,8 @@ public class SignInFormController implements Initializable {
         // TODO
         Image image1 = new Image("/AhmedImages/out.png");
             rollback.setImage(image1);
+              image1 = new Image("/AhmedImages/background.png");
+            background.setImage(image1);
     }    
 
     @FXML

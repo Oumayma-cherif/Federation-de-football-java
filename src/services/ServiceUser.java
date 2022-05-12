@@ -44,7 +44,7 @@ public class ServiceUser {
     }
     public boolean signIn(String username,String mdp) {
         try {
-            String requete = "SELECT * FROM User where username = ? and mdp = ?";
+            String requete = "SELECT * FROM User u inner join badge b on b.id = u.badge_id where username = ? and mdp = ?";
             PreparedStatement pst = cnx.prepareStatement(requete);
 			pst.setString(1, username);
 			pst.setString(2, mdp);
@@ -57,6 +57,10 @@ public class ServiceUser {
                 u.setEmail(rs.getString("email"));
                 u.setMdp(rs.getString("mdp"));
                 u.setRole(rs.getString("role"));
+                u.setNbp(rs.getInt("nbp"));
+                Badge bad = new Badge();
+                bad.setId(rs.getInt("badge_id"));
+                u.setBadge(bad);
                 session s = new session(u);
                 
                 return true;
@@ -125,12 +129,12 @@ public class ServiceUser {
     public void ajouter(User t) {
 		try {
                 
-            String requete = "INSERT INTO user (badge_id,username,mdp,nbp,email,role,image) VALUES (?,?,?,?,?,?,?)";
+            String requete = "INSERT INTO user (badge_id,username,mdp,nbp,email,role,img) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setString(1, "1");
             pst.setString(2, t.getUsername());
             pst.setString(3, t.getMdp());
-            pst.setString(4,"");
+            pst.setInt(4,0);
             pst.setString(5, t.getEmail());
             pst.setString(6, t.getRole());
             pst.setString(7, "avatar.png");
@@ -158,13 +162,14 @@ public class ServiceUser {
 
 	public void modifier(User t) {
 		   try {
-            String requete = "UPDATE user SET username=?, email=?, role=?, mdp=? WHERE id=?";
+            String requete = "UPDATE user SET username=?, email=?, role=?, mdp=?,badge_id=? WHERE id=?";
             PreparedStatement pst = cnx.prepareStatement(requete);
-            pst.setInt(5, t.getId());
+            pst.setInt(6, t.getId());
             pst.setString(1, t.getUsername());
             pst.setString(2, t.getEmail());
             pst.setString(3, t.getRole());
             pst.setString(4, t.getMdp());
+            pst.setInt(5, t.getBadge().getId());
             pst.executeUpdate();
 
         } catch (SQLException ex) {
@@ -203,7 +208,7 @@ public class ServiceUser {
        try {
           
            
-           String       req= "select * from user";
+           String       req= "select * from user  ";
            
            
            Statement st = cnx.createStatement();
@@ -214,6 +219,7 @@ public class ServiceUser {
                  u.setId(Integer.parseInt(rs.getString("id")));
                u.setUsername(rs.getString("username"));
                 u.setEmail(rs.getString("email"));
+                u.setRole(rs.getString("role"));
                users.add(u);
                
            }
