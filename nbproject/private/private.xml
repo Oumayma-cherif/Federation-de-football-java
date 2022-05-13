@@ -3,20 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/services/ServiceNotification.java</file>
-            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/javafxapplication1/AhmedMail.java</file>
-            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/javafxapplication1/ArticleDetailController.java</file>
-            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/util/banword.txt</file>
-            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/javafxapplication1/ShopController.java</file>
-            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/entities/User.java</file>
-            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/javafxapplication1/JavaFXApplication1.java</file>
-            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/valuesShop/shop.css</file>
-            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/services/ServiceInteraction.java</file>
-            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/util/MyDB.java</file>
-            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/services/ServiceArticle.java</file>
-            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/util/sendmail.java</file>
-            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/javafxapplication1/ArticleFrontController.java</file>
-            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/javafxapplication1/Home_turbo_devsController.java</file>
+            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/services/ServiceRewards.java</file>
+            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/controller/FrontofficeFormController.java</file>
+            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/gui/AffichTournoiController.java</file>
+            <file>file:/C:/Users/ksaay/Documents/NetBeansProjects/JavaFXApplication1/src/services/ServicePdf.java</file>
         </group>
     </open-files>
 </project-private>

@@ -31,14 +31,14 @@
                <children>
                   <VBox prefHeight="200.0" prefWidth="400.0">
                      <children>
-                        <Button fx:id="back" mnemonicParsing="false" onAction="#backMenu" styleClass="shopping-online-card" stylesheets="@style.css" text="Back" />
+                        <Button fx:id="back" mnemonicParsing="false" onAction="#backMenu" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #00cc99;" styleClass="shopping-online-card" stylesheets="@style.css" text="Back" />
                         <PieChart fx:id="pie" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" styleClass="table-column" stylesheets="@bootstrap.css" />
-                        <Button fx:id="btx" mnemonicParsing="false" onAction="#ajoutT" styleClass="shopping-online-card" stylesheets="@style.css" text="ajouter">
+                        <Button fx:id="btx" mnemonicParsing="false" onAction="#ajoutT" style="-fx-background-color: #66ccff;" styleClass="shopping-online-card" stylesheets="@style.css" text="Add">
                            <VBox.margin>
                               <Insets bottom="-30.0" left="75.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="pdf" mnemonicParsing="false" onAction="#PDF" styleClass="shopping-online-card" stylesheets="@style.css" text="Pdf" />
+                        <Button fx:id="pdf" mnemonicParsing="false" onAction="#PDF" style="-fx-background-color: #3d9a31;" styleClass="shopping-online-card" stylesheets="@style.css" text="Pdf" />
                      </children>
                   </VBox>
                </children>

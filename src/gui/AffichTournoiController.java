@@ -141,7 +141,7 @@ public class AffichTournoiController implements Initializable {
       }
         
     }
-      @FXML
+    @FXML
     private void supp(TableColumn.CellEditEvent<Tournoi, Integer> event) {
          Tournoi product=tableTournoi.getSelectionModel().getSelectedItem();
 //product.setId(event.getNewValue());
@@ -162,7 +162,7 @@ if (result.get() == ButtonType.OK){
     // ... user chose CANCEL or closed the dialog
 }
     }
-      @FXML
+    @FXML
     private void change(TableColumn.CellEditEvent<Tournoi, String> event) {
          Tournoi product=tableTournoi.getSelectionModel().getSelectedItem();
 product.setNomt(event.getNewValue());
@@ -170,7 +170,7 @@ product.setNomt(event.getNewValue());
     Tournoi t=new Tournoi (product);
     st.modifier(t);
     }
-      @FXML
+    @FXML
     private void chandedated(TableColumn.CellEditEvent<Tournoi, String> event) {
                  Tournoi product=tableTournoi.getSelectionModel().getSelectedItem();
                    LocalDate format= cal.getValue();
@@ -182,7 +182,7 @@ product.setDated(dated);
     Tournoi t=new Tournoi (product);
     st.modifier(t);
     }
-      @FXML
+    @FXML
     private void changedatef(TableColumn.CellEditEvent<Tournoi, String> event) {
                  Tournoi product=tableTournoi.getSelectionModel().getSelectedItem();
 product.setDatef(event.getNewValue());
@@ -190,7 +190,7 @@ product.setDatef(event.getNewValue());
     Tournoi t=new Tournoi (product);
     st.modifier(t);
     }
-      @FXML
+    @FXML
     private void changetype(TableColumn.CellEditEvent<Tournoi, String> event) {
                  Tournoi product=tableTournoi.getSelectionModel().getSelectedItem();
 product.setTypet(event.getNewValue());
@@ -198,7 +198,7 @@ product.setTypet(event.getNewValue());
     Tournoi t=new Tournoi (product);
     st.modifier(t);
     }
-      @FXML
+    @FXML
     private void changenbrc(TableColumn.CellEditEvent<Tournoi, Integer> event) {
                  Tournoi product=tableTournoi.getSelectionModel().getSelectedItem();
 product.setNbrc(event.getNewValue());
@@ -252,7 +252,7 @@ product.setNbrc(event.getNewValue());
              
              
         st.liste_admins(t);
-         Notification.Notification("Pdf Generé ", "Verifier votre repertoire");
+      //   Notification.Notification("Pdf Generé ", "Verifier votre repertoire");
     }
 
     }
@@ -289,6 +289,8 @@ product.setNbrc(event.getNewValue());
       System.err.println(ex.getMessage());}
         
     }
+
+   
     
     
 

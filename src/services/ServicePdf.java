@@ -117,7 +117,7 @@ for (i = 0; i < liste_admins.size(); i++) {
     table.addCell(liste_admins.get(i).getDatef());
     table.addCell(liste_admins.get(i).getTypet());
     table.addCell(String.valueOf(liste_admins.get(i).getNbrc()));
-     String imageFile = "C:\\Users\\ksaay\\Desktop\\anouer\\Federation-de-football-master-c\\public\\uploads\\img\\" +liste_admins.get(i).getLogo();
+     String imageFile = "C:\\Users\\ksaay\\Desktop\\anouer\\Federation-de-football-master-c\\public\\uploads\\" +liste_admins.get(i).getLogo();
 //ImageData data = ImageDataFactory.create(imageFile);
 Image img = Image.getInstance(imageFile);
     table.addCell(img);
